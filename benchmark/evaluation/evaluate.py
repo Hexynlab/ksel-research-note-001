@@ -129,9 +129,14 @@ def evaluate(dataset: list[dict[str, Any]], predictions: list[dict[str, Any]]) -
         if overlap:
             raise ValueError(f"Pairs cannot be classified as both dependent and independent: {sorted(overlap)}")
         known_pairs = dependent | independent
+        evidence_ids = {item["evidence_id"] for item in gold_row.get("evidence", [])}
         for pair in predicted_dependent | predicted_independent:
-            if not set(pair).issubset({item["evidence_id"] for item in gold_row.get("evidence", [])}):
+            if not set(pair).issubset(evidence_ids):
                 raise ValueError(f"Source-dependence prediction references unknown evidence pair: {pair}")
+            if pair not in known_pairs:
+                raise ValueError(
+                    f"Source-dependence prediction references an unlabelled evidence pair: {pair}"
+                )
         dependence = prf(predicted_dependent, dependent)
         independence = prf(predicted_independent, independent)
         for key in ("tp", "fp", "fn"):
