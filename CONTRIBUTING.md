@@ -35,6 +35,10 @@ Use GitHub Issues for questions, proposed corrections and research discussion. U
 
 Submissions may be discussed, revised, deferred or declined. A contribution does not guarantee publication or authorship. Material accepted into the research record will be attributed appropriately.
 
+## Release contributions
+
+Changes intended for a release must follow the [KSEL Release Governance Policy](governance/RELEASE-GOVERNANCE.md). Update the root `CHANGELOG.md` for material repository changes, preserve individual research-note version histories, and use the [release checklist](governance/RELEASE-CHECKLIST.md) before proposing a release. Do not move or reuse a published release tag.
+
 ## Scope
 
 This repository is for KSEL research. Other H3XYN LAB programmes should use their own repositories and governance unless a contribution directly concerns KSEL.
