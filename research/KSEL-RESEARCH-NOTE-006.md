@@ -604,6 +604,15 @@ These questions are proposed evaluation prompts, not a certification checklist o
 
 ---
 
+## Selected references and related work
+
+These sources provide foundations for temporal data semantics, provenance, and changing data distributions. KSEL's proposed freshness policies and reassessment rules require domain-specific validation.
+
+1. Jensen, C. S., et al. (1994). A Consensus Glossary of Temporal Database Concepts. *ACM SIGMOD Record, 23*(1), 52–64. https://doi.org/10.1145/181550.181560 — Shared terminology for temporal database concepts.
+2. Snodgrass, R. T. (1999). *Developing Time-Oriented Database Applications in SQL*. Morgan Kaufmann. https://shop.elsevier.com/books/developing-time-oriented-database-applications-in-sql/snodgrass/978-0-08-050422-3 — Temporal and bitemporal database application design.
+3. W3C. (2013). *PROV-O: The PROV Ontology*. W3C Recommendation. https://www.w3.org/TR/prov-o/ — Provenance representation, including activities and temporal metadata.
+4. Gama, J., Žliobaitė, I., Bifet, A., Pechenizkiy, M., & Bouchachia, A. (2014). A survey on concept drift adaptation. *ACM Computing Surveys, 46*(4), Article 44. https://doi.org/10.1145/2523813 — Changes in data distributions and adaptation/evaluation methods.
+
 ## Publication and research integrity statement
 
 This document presents a preliminary research framework developed for the KSEL research-note series of H3XYN LAB. Its architecture, schema, lifecycle states, hypotheses, metrics, and implementation stages are proposals for investigation.
@@ -613,3 +622,7 @@ No empirical validation, benchmark result, production deployment, certification,
 Future revisions should identify material changes, preserve version history, document corrections, and distinguish proposed concepts from experimentally supported conclusions.
 
 **End of KSEL Research Note 006.**
+
+**Suggested citation**
+
+H3XYN LAB. (2026). *KSEL Research Note 006: Temporal Intelligence, Evidence Evolution, and Continuous Knowledge Validation* (Version 0.1.0). H3XYN LAB Technical Research Notes. https://github.com/Hexynlab/ksel-research-note-001
