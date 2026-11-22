@@ -99,7 +99,11 @@ The final schema should support, at minimum:
 
 The schema must not require inventing lineage roots or derivation edges when source records do not establish them. Missing or unknown values must remain explicit.
 
-The existing public evaluator expects pair-level `dependent_pairs` and `independent_pairs` in gold data. It does not currently provide a dedicated gold field for ambiguous or conflicting pairs, nor a prediction field and metric for explicit unresolved classifications. Before confirmatory evaluation, either extend and test the schema/evaluator to represent these states or define a defensible, preregistered exclusion/stratification policy. Do not silently treat absence from both pair lists as proof of independence.
+The evaluator represents ambiguous and conflicting gold relationships using optional pair-level `ambiguous_pairs` and `conflicting_pairs` fields, and represents explicit prediction abstention using optional `unresolved_pairs`. The prediction JSON Schema defines the unresolved-pair shape; the evaluator enforces cross-array semantic constraints and rejects self-pairs, duplicate/reversed pairs, overlapping classifications, unknown evidence IDs and predictions on unlabelled pairs.
+
+Unresolved predictions are distinct from missing predictions. An explicit unresolved prediction contributes to the unresolved-prediction numerator; a labelled pair omitted from every prediction array is unclassified and reduces coverage without being counted as an explicit unresolved prediction. Both unresolved rate and classification coverage use all explicitly labelled gold pairs as their denominator.
+
+Binary false-independence and false-dependence metrics include only adjudicated DEPENDENT and INDEPENDENT gold pairs. AMBIGUOUS / INSUFFICIENT and CONFLICTING LINEAGE pairs are excluded from those binary denominators and reported separately. The held-out dataset must preserve these distinctions and their annotation provenance.
 
 ## 8. Quality assurance
 
@@ -137,7 +141,7 @@ The following remain undecided and require documented justification:
 3. Dataset size and pair counts.
 4. Distribution across scenario families.
 5. Statistical treatment of ambiguous and conflicting pairs.
-6. Whether a separate unresolved prediction state will be added to the prediction contract.
+6. Final pair counts and scenario distribution by adjudicated label.
 7. Data access, licensing and release constraints.
 8. Leakage-control procedure and held-out access controls.
 
