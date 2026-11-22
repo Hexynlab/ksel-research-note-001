@@ -11,6 +11,22 @@ SPEC.loader.exec_module(MODULE)
 
 
 class EvaluatorTests(unittest.TestCase):
+    def test_public_development_dataset_integrity(self):
+        rows = MODULE.read_jsonl(DATASET_PATH)
+        self.assertEqual(len(rows), 12)
+        case_ids = [row["case_id"] for row in rows]
+        self.assertEqual(len(case_ids), len(set(case_ids)))
+        for row in rows:
+            gold = row["gold"]
+            evidence_ids = {item["evidence_id"] for item in row["evidence"]}
+            self.assertTrue(set(gold["valid_evidence_ids"]).issubset(evidence_ids))
+            self.assertTrue(set(gold["invalid_evidence_ids"]).issubset(evidence_ids))
+            self.assertFalse(set(gold["valid_evidence_ids"]) & set(gold["invalid_evidence_ids"]))
+            for claim_id, evidence_id in gold["required_links"]:
+                self.assertIn(claim_id, {claim["claim_id"] for claim in row["claims"]})
+                self.assertIn(evidence_id, evidence_ids)
+            self.assertIn(gold["expected_decision_status"], {"supported", "uncertain", "unsupported", "review_required"})
+
     def setUp(self):
         self.dataset = [{
             "case_id": "C-1",
