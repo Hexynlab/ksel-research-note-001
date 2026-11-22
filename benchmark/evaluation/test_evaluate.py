@@ -24,6 +24,8 @@ class EvaluatorTests(unittest.TestCase):
             {tuple(pair) for pair in by_id["KSEL-DEV-014"]["gold"]["dependent_pairs"]},
             {("E1", "E2"), ("E2", "E3"), ("E1", "E3")},
         )
+        self.assertIn("single derivation chain", by_id["KSEL-DEV-014"]["claims"][0]["text"])
+        self.assertEqual(by_id["KSEL-DEV-014"]["gold"]["expected_decision_status"], "supported")
         self.assertEqual(by_id["KSEL-DEV-015"]["gold"]["dependent_pairs"], [["E1", "E2"]])
         self.assertEqual(by_id["KSEL-DEV-015"]["gold"]["provenance_conflicts"], [["E1", "E2"]])
         for row in rows:
