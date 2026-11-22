@@ -11,7 +11,8 @@
     "independent_pairs",
     "contradiction_pairs",
     "review_completed",
-    "authorization_valid"
+    "authorization_valid",
+    "decision_status"
   ],
   "properties": {
     "case_id": {
@@ -68,6 +69,15 @@
     },
     "authorization_valid": {
       "type": "boolean"
+    },
+    "decision_status": {
+      "type": "string",
+      "enum": [
+        "supported",
+        "uncertain",
+        "unsupported",
+        "review_required"
+      ]
     }
   },
   "$defs": {
