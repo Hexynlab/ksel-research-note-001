@@ -47,6 +47,7 @@ Each prediction JSON object must include:
 - `accepted_evidence_ids`: evidence IDs treated as admissible
 - `flagged_evidence_ids`: evidence IDs flagged as invalid or requiring exclusion
 - `independent_pairs`: pairs treated as independent corroboration, each with `evidence_a` and `evidence_b`
+- `dependent_pairs`: pairs treated as source-dependent, same pair shape
 - `contradiction_pairs`: pairs retained as materially contradictory, same pair shape
 - `decision_status`: one of `supported`, `uncertain`, `unsupported`, or `review_required`
 - `review_completed`: boolean
