@@ -49,12 +49,13 @@ Each prediction JSON object must include:
 - `flagged_evidence_ids`: evidence IDs flagged as invalid or requiring exclusion
 - `independent_pairs`: pairs treated as independent corroboration, each with `evidence_a` and `evidence_b`
 - `dependent_pairs`: pairs treated as source-dependent, same pair shape
+- `unresolved_pairs` (optional): pairs for which source dependence cannot be determined; explicit abstention, not a claim of independence
 - `contradiction_pairs`: pairs retained as materially contradictory, same pair shape
 - `decision_status`: one of `supported`, `uncertain`, `unsupported`, or `review_required`
 - `review_completed`: boolean
 - `authorization_valid`: boolean
 
-A system may abstain by leaving links or acceptance lists empty. Abstention is not automatically correct: the evaluator reports missed links and retention failures.
+A system may abstain on source dependence by listing a pair in `unresolved_pairs`. Omission is not an explicit unresolved prediction: it leaves the pair unclassified and reduces classification coverage. Unresolved predictions on adjudicated dependent pairs remain missed dependent detections.
 
 ## Metric definitions
 
@@ -65,12 +66,15 @@ The current evaluator operationalises only the measures listed below. RN-008 pro
 - Valid-evidence retention: proportion of gold valid evidence retained by the system.
 - False-acceptance rate: proportion of gold invalid evidence accepted by the system.
 - Stale-evidence detection recall: proportion of stale evidence flagged.
-- Dependent-pair and independent-pair detection: precision, recall and F1 over explicitly annotated pairs.\n- False-independence and false-dependence rates: misclassification rates over the corresponding explicitly annotated gold pairs.\n- Unlabelled source pairs: predictions are rejected; ambiguous lineage is not silently treated as independence.
+- Dependent-pair and independent-pair detection: precision, recall and F1 over explicitly annotated pairs.\n- False-independence and false-dependence rates: misclassification rates over the corresponding explicitly annotated gold pairs.\n- Unlabelled source pairs: predictions are rejected; ambiguous/conflicting gold pairs are excluded from binary dependence metrics and reported separately.
+- Explicit unresolved-prediction rate and source-dependence classification coverage, using all explicitly labelled gold pairs as the denominator.
 - Contradiction preservation: precision, recall and F1 over annotated contradiction pairs.
 - Decision-status accuracy: exact match against the case-specific expected status. This is a coarse annotation check, not a measure of general reasoning quality.
 - Review and authorization compliance: proportion of review-required cases with both review completion and valid authorization recorded.
 
-Undefined denominators are reported as `null`, not silently converted to zero.
+Undefined denominators are reported as `null`, not silently converted to zero. Empty-empty precision/recall/F1 categories return `null` for all three rather than implying perfect performance. If gold positives exist but none are predicted, precision is `null`, recall is `0.0`, and F1 is `0.0`.
+
+Unresolved prediction rate counts explicitly unresolved pairs divided by all explicitly labelled gold pairs. Classification coverage counts labelled pairs receiving a dependent, independent or unresolved prediction, divided by the same denominator. Omitted labelled pairs reduce coverage but are not explicit unresolved predictions.
 
 ## Important interpretation limits
 
