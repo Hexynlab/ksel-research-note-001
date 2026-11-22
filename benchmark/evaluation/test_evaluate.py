@@ -31,6 +31,10 @@ class EvaluatorTests(unittest.TestCase):
     def setUp(self):
         self.dataset = [{
             "case_id": "C-1",
+            "evidence": [
+                {"evidence_id": "E-1"}, {"evidence_id": "E-2"},
+                {"evidence_id": "E-3"}, {"evidence_id": "E-4"},
+            ],
             "gold": {
                 "required_links": [["CL-1", "E-1"]],
                 "valid_evidence_ids": ["E-1"],
