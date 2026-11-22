@@ -114,9 +114,10 @@ The series distinguishes source evidence, claims, inference and recommendations.
 │   ├── REPRODUCIBILITY-STANDARD.md
 │   └── RESEARCH-INTEGRITY.md
 ├── implementation/
-│   ├── Profile A reference engine
-│   ├── schemas, examples and tests
-│   └── black-box conformance suite
+│   ├── schemas/
+│   ├── examples/
+│   ├── tests/
+│   └── Profile A and evaluation specifications
 ├── research/
 ├── scripts/
 │   ├── test_validate_release.py
@@ -128,7 +129,9 @@ The series distinguishes source evidence, claims, inference and recommendations.
 └── VERSION
 ```
 
-## Implementation companion\n\nThe [KSEL Implementation and Evaluation Framework](implementation/KSEL-IMPLEMENTATION-AND-EVALUATION-FRAMEWORK-v0.1.0.md) defines Profiles A–C. Profile A has an experimental [record-contract bundle](implementation/PROFILE-A-RECORD-CONTRACTS-v0.1.0.md), [reference engine](implementation/PROFILE-A-REFERENCE-ENGINE-v0.1.0.md), and [black-box conformance test suite](implementation/PROFILE-A-CONFORMANCE-TEST-SUITE-v0.1.0.md). These artefacts are proposed/experimental and do not establish certification, production readiness, empirical effectiveness, or independent replication.\n\n## RN-008 experimental artefacts
+## Implementation companion
+
+The [KSEL Implementation and Evaluation Framework](implementation/KSEL-IMPLEMENTATION-AND-EVALUATION-FRAMEWORK-v0.1.0.md) defines Profiles A–C. Profile A has an experimental [record-contract bundle](implementation/PROFILE-A-RECORD-CONTRACTS-v0.1.0.md), [reference engine](implementation/PROFILE-A-REFERENCE-ENGINE-v0.1.0.md), and [black-box conformance test suite](implementation/PROFILE-A-CONFORMANCE-TEST-SUITE-v0.1.0.md). These artefacts are proposed/experimental and do not establish certification, production readiness, empirical effectiveness, or independent replication.\n\n## RN-008 experimental artefacts
 
 The [RN-008 experimental starter kit](benchmark/README.md) contains a transparent synthetic development fixture, prediction schema, deterministic evaluator, benchmark specification and preregistration template. Its 12 fictional cases are for development only and are not a validated or blind benchmark.
 
