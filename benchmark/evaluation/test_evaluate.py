@@ -105,13 +105,19 @@ class EvaluatorTests(unittest.TestCase):
 
     def test_unresolved_prediction_is_reported_and_not_counted_as_independent(self):
         prediction = [{
-            "case_id": "C-1", "dependent_pairs": [], "independent_pairs": [],
-            "unresolved_pairs": [{"evidence_a": "E-3", "evidence_b": "E-4"}],
+            "case_id": "C-1",
+            "dependent_pairs": [],
+            "independent_pairs": [
+                {"evidence_a": "E-1", "evidence_b": "E-2"}
+            ],
+            "unresolved_pairs": [
+                {"evidence_a": "E-3", "evidence_b": "E-4"}
+            ],
         }]
         result = MODULE.evaluate(self.dataset, prediction)
         self.assertEqual(result["metrics"]["false_independence_rate"], 0.0)
         self.assertEqual(result["metrics"]["dependent_pair_detection"]["recall"], 0.0)
-        self.assertEqual(result["metrics"]["unresolved_prediction_rate"], 1.0)
+        self.assertEqual(result["metrics"]["unresolved_prediction_rate"], 0.5)
         self.assertEqual(result["metrics"]["source_dependence_classification_coverage"], 1.0)
 
     def test_ambiguous_and_conflicting_gold_pairs_are_not_binary_scored(self):
