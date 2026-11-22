@@ -748,10 +748,19 @@ Event names are illustrative. Production schemas should define stable identifier
 
 ---
 
+## Selected references and related work
+
+These works provide background on knowledge-graph representation, provenance, and interoperable graph data. Their existence does not establish that a particular KSEL graph schema is correct or that graph connectivity proves causality.
+
+1. Hogan, A., et al. (2021). Knowledge Graphs. *ACM Computing Surveys, 54*(4), Article 71. https://doi.org/10.1145/3447772 — A broad survey of graph models, query languages, validation, and knowledge representation.
+2. Buneman, P., Khanna, S., & Tan, W.-C. (2001). Why and Where: A Characterization of Data Provenance. In *Database Theory — ICDT 2001*, 316–330. https://doi.org/10.1007/3-540-44503-X_20 — Provenance semantics for data derived from source records.
+3. W3C. (2013). *PROV-O: The PROV Ontology*. W3C Recommendation. https://www.w3.org/TR/prov-o/ — Interoperable representation of provenance entities, activities, and agents.
+4. W3C. (2014). *RDF 1.1 Concepts and Abstract Syntax*. W3C Recommendation. https://www.w3.org/TR/rdf11-concepts/ — Foundational concepts for graph-based data representation.
+
 ## Publication and integrity statement
 
 This document presents a preliminary research framework. It does not report completed validation experiments, establish a validated ontology, certify a graph implementation, or claim that graph representation guarantees factual correctness, causal validity, or secure reasoning. All relationship semantics, inference procedures, and access controls require domain-specific specification and testing. Future empirical work should publish methods, schemas, baselines, evaluation criteria, limitations, and reproducibility information sufficient for independent scrutiny.
 
 **Suggested citation**
 
-H3XYN LAB. (2026). *KSEL Research Note 004: Evidence Graphs, Knowledge Representation, and Cross-Source Reasoning* (Version 0.1.0). H3XYN LAB Technical Research Notes. https://github.com/nofuxgvnwiring-source/ksel-research-note-001
+H3XYN LAB. (2026). *KSEL Research Note 004: Evidence Graphs, Knowledge Representation, and Cross-Source Reasoning* (Version 0.1.0). H3XYN LAB Technical Research Notes. https://github.com/Hexynlab/ksel-research-note-001
