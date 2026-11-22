@@ -50,6 +50,20 @@ class ProfileAEngineTests(unittest.TestCase):
         with self.assertRaisesRegex(KSELValidationError, "duplicate record id"):
             validate_records(records)
 
+    def test_duplicate_evidence_links_are_rejected(self):
+        records = [dict(r) for r in self.records]
+        claim = next(r for r in records if r["record_type"] == "claim")
+        claim["evidence_links"].append(dict(claim["evidence_links"][0]))
+        with self.assertRaisesRegex(KSELValidationError, "duplicate evidence"):
+            validate_records(records)
+
+    def test_source_lineage_cycle_is_rejected(self):
+        records = [dict(r) for r in self.records]
+        source = next(r for r in records if r["record_type"] == "source")
+        source["derived_from"] = [source["id"]]
+        with self.assertRaisesRegex(KSELValidationError, "lineage cycle"):
+            validate_records(records)
+
     def test_review_target_version_mismatch_is_rejected(self):
         records = [dict(r) for r in self.records]
         review = next(r for r in records if r["record_type"] == "review")
@@ -95,6 +109,28 @@ class ProfileAEngineTests(unittest.TestCase):
         self.assertTrue(ledger.verify())
         ledger._entries[0]["event"]["event_type"] = "deleted"
         self.assertFalse(ledger.verify())
+
+    def test_audit_event_ids_must_be_unique_across_entire_ledger(self):
+        ledger = HashChainAuditLedger()
+        ledger.append({"id": "AUD-1", "event_type": "created"})
+        ledger.append({"id": "AUD-2", "event_type": "reviewed"})
+        with self.assertRaisesRegex(ValueError, "duplicate audit event id"):
+            ledger.append({"id": "AUD-1", "event_type": "reused"})
+
+    def test_audit_event_id_must_be_non_empty(self):
+        ledger = HashChainAuditLedger()
+        with self.assertRaisesRegex(ValueError, "non-empty"):
+            ledger.append({"id": "", "event_type": "created"})
+
+    def test_audit_replay_rejects_disallowed_transition_even_with_valid_hash(self):
+        ledger = HashChainAuditLedger()
+        ledger.append({
+            "id": "AUD-1", "event_type": "state_transition",
+            "target_id": "CLM-1", "prior_state": "draft",
+            "resulting_state": "approved",
+        })
+        with self.assertRaisesRegex(KSELValidationError, "disallowed transition"):
+            ledger.reconstruct_claim_states({"CLM-1": "draft"})
 
     def test_audit_replay_reconstructs_claim_state(self):
         ledger = HashChainAuditLedger()
