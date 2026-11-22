@@ -37,6 +37,7 @@ class EvaluatorTests(unittest.TestCase):
                 "invalid_evidence_ids": ["E-2"],
                 "stale_evidence_ids": ["E-2"],
                 "dependent_pairs": [["E-3", "E-4"]],
+                "independent_pairs": [["E-1", "E-2"]],
                 "contradiction_pairs": [["E-1", "E-2"]],
                 "review_required": True,
                 "expected_decision_status": "review_required",
@@ -49,7 +50,8 @@ class EvaluatorTests(unittest.TestCase):
             "traceability_links": [{"claim_id": "CL-1", "evidence_id": "E-1"}],
             "accepted_evidence_ids": ["E-1"],
             "flagged_evidence_ids": ["E-2"],
-            "independent_pairs": [],
+            "independent_pairs": [{"evidence_a": "E-1", "evidence_b": "E-2"}],
+            "dependent_pairs": [{"evidence_a": "E-3", "evidence_b": "E-4"}],
             "contradiction_pairs": [{"evidence_a": "E-1", "evidence_b": "E-2"}],
             "review_completed": True,
             "authorization_valid": True,
@@ -61,10 +63,43 @@ class EvaluatorTests(unittest.TestCase):
         self.assertEqual(result["metrics"]["valid_evidence_retention"], 1.0)
         self.assertEqual(result["metrics"]["false_acceptance_rate"], 0.0)
         self.assertEqual(result["metrics"]["stale_evidence_detection_recall"], 1.0)
-        self.assertEqual(result["metrics"]["false_corroboration_rate"], 0.0)
+        self.assertEqual(result["metrics"]["dependent_pair_detection"]["f1"], 1.0)
+        self.assertEqual(result["metrics"]["independent_pair_detection"]["f1"], 1.0)
+        self.assertEqual(result["metrics"]["false_independence_rate"], 0.0)
+        self.assertEqual(result["metrics"]["false_dependence_rate"], 0.0)
         self.assertEqual(result["metrics"]["contradiction_preservation"]["f1"], 1.0)
         self.assertEqual(result["metrics"]["review_and_authorization_compliance"], 1.0)
         self.assertEqual(result["metrics"]["decision_status_accuracy"], 1.0)
+
+    def test_abstention_does_not_score_as_source_dependence_detection(self):
+        prediction = [{
+            "case_id": "C-1",
+            "traceability_links": [{"claim_id": "CL-1", "evidence_id": "E-1"}],
+            "accepted_evidence_ids": ["E-1"],
+            "flagged_evidence_ids": ["E-2"],
+            "independent_pairs": [],
+            "dependent_pairs": [],
+            "contradiction_pairs": [],
+            "review_completed": True,
+            "authorization_valid": True,
+            "decision_status": "review_required",
+        }]
+        result = MODULE.evaluate(self.dataset, prediction)
+        self.assertEqual(result["metrics"]["dependent_pair_detection"]["recall"], 0.0)
+        self.assertEqual(result["metrics"]["independent_pair_detection"]["recall"], 0.0)
+
+    def test_pair_cannot_be_both_dependent_and_independent(self):
+        prediction = [{
+            "case_id": "C-1",
+            "independent_pairs": [{"evidence_a": "E-3", "evidence_b": "E-4"}],
+            "dependent_pairs": [{"evidence_a": "E-4", "evidence_b": "E-3"}],
+        }]
+        with self.assertRaisesRegex(ValueError, "both dependent and independent"):
+            MODULE.evaluate(self.dataset, prediction)
+
+    def test_duplicate_pairs_are_rejected(self):
+        with self.assertRaisesRegex(ValueError, "Duplicate pair"):
+            MODULE.pair_set([["E-1", "E-2"], ["E-2", "E-1"]])
 
     def test_missing_prediction_is_rejected(self):
         with self.assertRaisesRegex(ValueError, "missing cases"):
