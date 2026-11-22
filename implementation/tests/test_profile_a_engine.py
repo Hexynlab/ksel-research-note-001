@@ -1,7 +1,11 @@
 """Adversarial and behavioural tests for the KSEL Profile A reference engine."""
 import json
+import sys
 import unittest
 from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
 
 from ksel_profile_a import (
     HashChainAuditLedger,
@@ -11,7 +15,6 @@ from ksel_profile_a import (
     validate_records,
 )
 
-ROOT = Path(__file__).resolve().parents[1]
 FIXTURES = ROOT / "examples" / "profile-a-examplelib.jsonl"
 
 
