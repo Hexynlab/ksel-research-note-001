@@ -32,6 +32,13 @@ Develops a layered integrity model separating content integrity, source authenti
 
 [Read Research Note 003](research/KSEL-RESEARCH-NOTE-003.md)
 
+### KSEL Research Note 004
+**Evidence Graphs, Knowledge Representation, and Cross-Source Reasoning**
+
+Proposes a typed, versioned evidence graph connecting sources, evidence objects, observations, claims, transformations, uncertainty, reviews, and decisions. Develops provenance and argument paths, temporal semantics, contradiction preservation, source-dependency analysis, bounded reasoning, and change-impact assessment.
+
+[Read Research Note 004](research/KSEL-RESEARCH-NOTE-004.md)
+
 ## Research position
 
 These publications are preliminary research frameworks. Their hypotheses and evaluation measures are proposed for future testing; they are not presented as validated findings, certified standards, or proof of system performance.
@@ -46,7 +53,8 @@ The series distinguishes source evidence, claims, inference, and recommendations
 └── research/
     ├── KSEL-RESEARCH-NOTE-001.md
     ├── KSEL-RESEARCH-NOTE-002.md
-    └── KSEL-RESEARCH-NOTE-003.md
+    ├── KSEL-RESEARCH-NOTE-003.md
+    └── KSEL-RESEARCH-NOTE-004.md
 ```
 
 ## Research integrity
@@ -55,4 +63,4 @@ H3XYN LAB aims to make research claims proportionate to available evidence. Futu
 
 ## Citation
 
-H3XYN LAB. (2026). *KSEL Research Notes 001–003*. H3XYN LAB Technical Research Notes. Repository: https://github.com/nofuxgvnwiring-source/ksel-research-note-001
+H3XYN LAB. (2026). *KSEL Research Notes 001–004*. H3XYN LAB Technical Research Notes. Repository: https://github.com/nofuxgvnwiring-source/ksel-research-note-001
