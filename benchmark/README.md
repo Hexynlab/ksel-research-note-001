@@ -83,7 +83,7 @@ Undefined denominators are reported as `null`, not silently converted to zero.
 
 ## Next research work
 
-Before confirmatory experiments, H3XYN LAB should:
+Before confirmatory experiments, HEXYN LAB should:
 - review the task definitions and gold annotations;
 - expand the dataset using documented generation and sampling procedures;
 - establish baseline and KSEL treatment implementations with equivalent resource budgets;

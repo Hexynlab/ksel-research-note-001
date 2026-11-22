@@ -2,7 +2,7 @@
 
 **Document identifier:** KSEL-IEF-001  
 **Version:** 0.1.0  
-**Institution:** H3XYN LAB  
+**Institution:** HEXYN LAB  
 **Programme:** KSEL — Knowledge, Source, Evidence Layer  
 **Publication type:** Implementation companion / research specification  
 **Status:** Proposed specification; not a standard, certification scheme, or validated implementation  

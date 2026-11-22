@@ -1,6 +1,6 @@
 # KSEL licensing
 
-**Publishing-source attribution: H3XYN LAB.**
+**Publishing-source attribution: HEXYN LAB.**
 
 KSEL is intended for commercial and non-commercial reuse, subject to the applicable licence terms. This guide defines the file-level scope so that the two licences are not confused or applied to third-party material.
 
@@ -21,7 +21,7 @@ The Apache 2.0 grant in [LICENSE](LICENSE) applies to these repository paths:
 
 ### Creative Commons Attribution 4.0 International — research prose and published examples
 
-The CC BY 4.0 grant in [LICENSE-DOCS](LICENSE-DOCS) applies to original H3XYN LAB material in these paths:
+The CC BY 4.0 grant in [LICENSE-DOCS](LICENSE-DOCS) applies to original HEXYN LAB material in these paths:
 
 - `research/*.md`.
 - `governance/*.md`.
@@ -33,7 +33,7 @@ The CC BY 4.0 grant in [LICENSE-DOCS](LICENSE-DOCS) applies to original H3XYN LA
 
 ### Notices and release metadata
 
-- `LICENSE` and `LICENSE-DOCS` reproduce the respective standard licence texts and scope notices; those legal texts are not relicensed as original H3XYN LAB content.
+- `LICENSE` and `LICENSE-DOCS` reproduce the respective standard licence texts and scope notices; those legal texts are not relicensed as original HEXYN LAB content.
 - `NOTICE` is an attribution notice, not a separate licence grant.
 - `LICENSING.md` is a scope guide under CC BY 4.0 to the extent copyright subsists in its original prose.
 - `VERSION` contains release metadata and is not separately offered as a creative work under either grant.
@@ -41,13 +41,13 @@ The CC BY 4.0 grant in [LICENSE-DOCS](LICENSE-DOCS) applies to original H3XYN LA
 
 ## Attribution
 
-For CC BY 4.0 material, provide appropriate credit to **H3XYN LAB**, link to the licence, indicate whether changes were made, and do not imply endorsement. For Apache-licensed software, provide a copy of the licence, retain applicable copyright, patent, trademark and attribution notices, reproduce relevant NOTICE content, and mark modified files as required by Apache 2.0.
+For CC BY 4.0 material, provide appropriate credit to **HEXYN LAB**, link to the licence, indicate whether changes were made, and do not imply endorsement. For Apache-licensed software, provide a copy of the licence, retain applicable copyright, patent, trademark and attribution notices, reproduce relevant NOTICE content, and mark modified files as required by Apache 2.0.
 
 Suggested attribution:
 
-> KSEL research and/or implementation by H3XYN LAB. Original source: https://github.com/Hexynlab/ksel-research-note-001. Licensed under the applicable licence stated in LICENSING.md. Changes: [describe changes or state none].
+> KSEL research and/or implementation by HEXYN LAB. Original source: https://github.com/Hexynlab/ksel-research-note-001. Licensed under the applicable licence stated in LICENSING.md. Changes: [describe changes or state none].
 
-Attribution identifies the publishing source; it does not grant permission to use H3XYN LAB names or marks to imply sponsorship, endorsement, or official affiliation.
+Attribution identifies the publishing source; it does not grant permission to use HEXYN LAB names or marks to imply sponsorship, endorsement, or official affiliation.
 
 ## Third-party material and exclusions
 
@@ -67,4 +67,4 @@ By intentionally submitting a contribution for inclusion, you confirm that you h
 
 ## Important
 
-This is a plain-language scope guide, not legal advice or a determination of copyright ownership. The full licence terms are in [LICENSE](LICENSE) and [LICENSE-DOCS](LICENSE-DOCS). H3XYN LAB should apply these grants only to material for which it has the necessary rights. Seek qualified advice for ownership, patents, trademarks, and third-party rights.
+This is a plain-language scope guide, not legal advice or a determination of copyright ownership. The full licence terms are in [LICENSE](LICENSE) and [LICENSE-DOCS](LICENSE-DOCS). HEXYN LAB should apply these grants only to material for which it has the necessary rights. Seek qualified advice for ownership, patents, trademarks, and third-party rights.

@@ -1,10 +1,10 @@
-# H3XYN LAB — KSEL Release Governance
+# HEXYN LAB — KSEL Release Governance
 
 **Policy version:** 1.0  
 **Applies to:** KSEL research-note series, public schemas, benchmark artefacts, evaluation code and supporting documentation in this repository  
 **Status:** Public governance policy  
 **Effective date:** 22 November 2026  
-**Authority:** H3XYN LAB
+**Authority:** HEXYN LAB
 
 ## 1. Purpose
 
@@ -48,7 +48,7 @@ Versioning is a repository snapshot convention. Individual research notes and ex
 6. The release workflow must pass before a GitHub Release is published.
 7. Release approval must not be inferred from a passing automated test. Tests establish only the properties they actually exercise.
 
-H3XYN LAB currently operates this repository as an independent research programme. This policy does not imply an external review board, independent governance body or formal peer-review process.
+HEXYN LAB currently operates this repository as an independent research programme. This policy does not imply an external review board, independent governance body or formal peer-review process.
 
 ## 5. Automated release validation
 

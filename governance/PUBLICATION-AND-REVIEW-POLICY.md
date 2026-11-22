@@ -1,4 +1,4 @@
-# H3XYN LAB — Publication and Review Policy
+# HEXYN LAB — Publication and Review Policy
 
 **Status:** Public policy, version 1.0  
 **Effective date:** 22 November 2026
@@ -28,7 +28,7 @@ Every substantive revision should include a change log. Do not silently overwrit
 
 Review status must be described accurately:
 
-- **Internal review:** review conducted within H3XYN LAB.
+- **Internal review:** review conducted within HEXYN LAB.
 - **External review:** feedback from an identified reviewer outside the laboratory.
 - **Independent replication:** a separate party has attempted to reproduce a defined method or result.
 - **Formal peer review:** only use this term when a documented peer-review process has actually occurred.
@@ -58,4 +58,4 @@ Before publication, check:
 
 ## 7. No implied endorsement
 
-A reviewer, contributor, institution or cited author should not be represented as endorsing H3XYN LAB or KSEL unless explicit permission and evidence of endorsement exist.
+A reviewer, contributor, institution or cited author should not be represented as endorsing HEXYN LAB or KSEL unless explicit permission and evidence of endorsement exist.

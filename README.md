@@ -1,7 +1,7 @@
 # KSEL Research Notes
 ## Evidence Governance for Intelligent Systems
 
-**Institution:** H3XYN LAB  
+**Institution:** HEXYN LAB  
 **Programme:** KSEL — Knowledge, Source, Evidence Layer  
 **Repository status:** Active public research publication  
 **Current publication set:** Research Notes 001–008  
@@ -18,7 +18,7 @@ This repository publishes the KSEL research-note series and its supporting resea
 
 ## Licensing and reuse
 
-KSEL is open for commercial and non-commercial reuse, subject to attribution and the applicable licence. Software and machine-readable implementation artefacts are licensed under **Apache 2.0**. Research notes, governance and explanatory documentation, and the published synthetic/example datasets are licensed under **CC BY 4.0**. In both cases, attribution to **H3XYN LAB** is required under the licence terms.
+KSEL is open for commercial and non-commercial reuse, subject to attribution and the applicable licence. Software and machine-readable implementation artefacts are licensed under **Apache 2.0**. Research notes, governance and explanatory documentation, and the published synthetic/example datasets are licensed under **CC BY 4.0**. In both cases, attribution to **HEXYN LAB** is required under the licence terms.
 
 See [LICENSING.md](LICENSING.md) for the exact file scope, attribution guidance, and third-party-material exclusions; see [LICENSE](LICENSE) and [LICENSE-DOCS](LICENSE-DOCS) for the full licence texts.
 
@@ -153,12 +153,12 @@ See [Release Governance v1.0](governance/RELEASE-GOVERNANCE.md) and the [Release
 
 ## Research integrity
 
-H3XYN LAB aims to make research claims proportionate to available evidence. Empirical work should document methods, assumptions, baselines, limitations and reproducibility information. No experimental result should be inferred from the existence of a proposed framework or protocol.
+HEXYN LAB aims to make research claims proportionate to available evidence. Empirical work should document methods, assumptions, baselines, limitations and reproducibility information. No experimental result should be inferred from the existence of a proposed framework or protocol.
 
 Corrections and substantive revisions should be documented. Review status must be represented accurately; GitHub publication or community discussion is not, by itself, formal peer review.
 
 ## Citation
 
-H3XYN LAB. (2026). *KSEL Research Notes: Evidence Governance for Intelligent Systems*. H3XYN LAB Technical Research Series. https://github.com/Hexynlab/ksel-research-note-001
+HEXYN LAB. (2026). *KSEL Research Notes: Evidence Governance for Intelligent Systems*. HEXYN LAB Technical Research Series. https://github.com/Hexynlab/ksel-research-note-001
 
 For a specific claim, cite the individual research note and version rather than only the repository landing page.

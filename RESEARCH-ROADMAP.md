@@ -1,6 +1,6 @@
 # KSEL Research Programme Roadmap
 
-**Institution:** H3XYN LAB  
+**Institution:** HEXYN LAB  
 **Programme:** KSEL — Knowledge, Source, Evidence Layer  
 **Status:** Public research roadmap; subject to revision  
 **Last updated:** 22 November 2026

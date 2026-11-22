@@ -1,11 +1,11 @@
-# H3XYN LAB — Public Disclosure Policy
+# HEXYN LAB — Public Disclosure Policy
 
 **Status:** Public policy, version 1.0  
 **Effective date:** 22 November 2026
 
 ## 1. Purpose
 
-H3XYN LAB supports open scrutiny of research while recognising that not every artefact should be public. Disclosure decisions should protect people, systems, legitimate rights and research integrity without using secrecy to avoid scientific criticism.
+HEXYN LAB supports open scrutiny of research while recognising that not every artefact should be public. Disclosure decisions should protect people, systems, legitimate rights and research integrity without using secrecy to avoid scientific criticism.
 
 ## 2. Generally suitable for public release
 

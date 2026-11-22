@@ -1,12 +1,12 @@
 # KSEL Research Note 004
 ## Evidence Graphs, Knowledge Representation, and Cross-Source Reasoning
 
-**Publication series:** H3XYN LAB — Technical Research Notes  
+**Publication series:** HEXYN LAB — Technical Research Notes  
 **Document identifier:** KSEL-RN-004  
 **Version:** 0.1.0  
 **Status:** Preliminary research framework  
 **Date:** 22 November 2026  
-**Maintained by:** H3XYN LAB  
+**Maintained by:** HEXYN LAB  
 **Research area:** Knowledge representation, evidence graphs, provenance-aware reasoning, uncertainty propagation, intelligent-system governance
 
 ---
@@ -763,4 +763,4 @@ This document presents a preliminary research framework. It does not report comp
 
 **Suggested citation**
 
-H3XYN LAB. (2026). *KSEL Research Note 004: Evidence Graphs, Knowledge Representation, and Cross-Source Reasoning* (Version 0.1.0). H3XYN LAB Technical Research Notes. https://github.com/Hexynlab/ksel-research-note-001
+HEXYN LAB. (2026). *KSEL Research Note 004: Evidence Graphs, Knowledge Representation, and Cross-Source Reasoning* (Version 0.1.0). HEXYN LAB Technical Research Notes. https://github.com/Hexynlab/ksel-research-note-001

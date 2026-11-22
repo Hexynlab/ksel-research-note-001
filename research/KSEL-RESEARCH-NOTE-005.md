@@ -2,7 +2,7 @@
 ## Decision Intelligence, Causal Reasoning, and Evidence-Based Decision Systems
 
 **Research programme:** KSEL — Knowledge, Source, Evidence Layer  
-**Institution:** H3XYN LAB  
+**Institution:** HEXYN LAB  
 **Publication type:** Preliminary research framework  
 **Version:** 0.1.0  
 **Date:** 22 November 2026  
@@ -553,7 +553,7 @@ These sources inform causal reasoning and decision analysis. They are included t
 
 ## Appendix D — Publication integrity statement
 
-This document presents a preliminary research framework developed within the KSEL programme at H3XYN LAB. Its architecture, node types, relationships, workflows, hypotheses, and evaluation methods are proposals for investigation.
+This document presents a preliminary research framework developed within the KSEL programme at HEXYN LAB. Its architecture, node types, relationships, workflows, hypotheses, and evaluation methods are proposals for investigation.
 
 No empirical validation, benchmark result, production deployment, certification, or demonstrated performance is claimed. Illustrative examples are hypothetical. Causal effects must not be inferred from association, graph connectivity, or model output alone. Future empirical claims should include reproducible methods, evidence, limitations, and independent scrutiny.
 
@@ -563,4 +563,4 @@ No empirical validation, benchmark result, production deployment, certification,
 
 **Suggested citation**
 
-H3XYN LAB. (2026). *KSEL Research Note 005: Decision Intelligence, Causal Reasoning, and Evidence-Based Decision Systems* (Version 0.1.0). H3XYN LAB Technical Research Notes. https://github.com/Hexynlab/ksel-research-note-001
+HEXYN LAB. (2026). *KSEL Research Note 005: Decision Intelligence, Causal Reasoning, and Evidence-Based Decision Systems* (Version 0.1.0). HEXYN LAB Technical Research Notes. https://github.com/Hexynlab/ksel-research-note-001
