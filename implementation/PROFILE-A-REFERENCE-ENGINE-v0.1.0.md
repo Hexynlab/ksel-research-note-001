@@ -15,7 +15,7 @@ The reference engine demonstrates:
 - Review-decision matching for approval, qualification, and rejection.
 - An in-memory SHA-256 hash-linked audit ledger.
 - Audit-chain verification, globally unique non-empty event IDs, and deterministic claim-state replay that rejects disallowed state transitions.
-- Adversarial tests for dangling references, wrong reference types, duplicate IDs, version mismatches, unauthorized/invalid transitions, event tampering, and replay inconsistencies.
+- Implementation-focused adversarial tests for dangling references, wrong reference types, duplicate IDs, version mismatches, unauthorized/invalid transitions, event tampering, and replay inconsistencies.\n- A separate black-box conformance module is documented in `PROFILE-A-CONFORMANCE-TEST-SUITE-v0.1.0.md`.
 
 ## Run
 
@@ -39,4 +39,4 @@ This is a reference implementation for review and experimentation. It does **not
 
 The hash chain detects modification relative to a trusted retained chain head; it is not, by itself, immutable storage. The role supplied to \`transition_claim\` is a policy input, not an authenticated credential. The engine's in-memory interfaces are intentionally small and must not be treated as a production deployment architecture.
 
-The examples remain fictional. Passing the test suite establishes only the tested behaviours of this implementation. The adversarial suite explicitly covers dangling and mistyped references, duplicate IDs and evidence links, cyclic source lineage, review-version mismatch, disallowed transitions, duplicate audit event IDs, hash tampering, and inconsistent replay.
+The examples remain fictional. Passing tests establishes only the tested behaviours of this implementation. The black-box suite is separate from the implementation-focused tests but is maintained in the same repository; it is not independent third-party replication. The engine rejects schema-invalid record sets before cross-record traversal and treats an explicitly supplied empty role policy as deny-all. The suites cover malformed record shapes, dangling and mistyped references, duplicate IDs and evidence links, cyclic source lineage, review-version mismatch, role-policy boundaries, event tampering, and replay inconsistencies.
