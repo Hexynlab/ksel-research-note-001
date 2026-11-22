@@ -59,6 +59,18 @@ class EvaluatorTests(unittest.TestCase):
             },
         }]
 
+    def test_empty_empty_prf_is_undefined_not_perfect(self):
+        result = MODULE.prf_from_counts(0, 0, 0)
+        self.assertIsNone(result["precision"])
+        self.assertIsNone(result["recall"])
+        self.assertIsNone(result["f1"])
+
+    def test_prf_with_gold_but_no_predictions_has_undefined_precision(self):
+        result = MODULE.prf_from_counts(0, 0, 2)
+        self.assertIsNone(result["precision"])
+        self.assertEqual(result["recall"], 0.0)
+        self.assertEqual(result["f1"], 0.0)
+
     def test_perfect_prediction(self):
         prediction = [{
             "case_id": "C-1",
