@@ -81,6 +81,7 @@ def evaluate(dataset: list[dict[str, Any]], predictions: list[dict[str, Any]]) -
         "false_corroboration": {"false_independent": 0, "dependent_total": 0},
         "contradiction": {"tp": 0, "fp": 0, "fn": 0},
         "review": {"compliant": 0, "required": 0},
+        "decision": {"correct": 0, "total": 0},
     }
     per_case = []
     for case_id, gold_row in gold_by_id.items():
@@ -119,6 +120,11 @@ def evaluate(dataset: list[dict[str, Any]], predictions: list[dict[str, Any]]) -
         for key in ("tp", "fp", "fn"):
             totals["contradiction"][key] += conflict[key]
 
+        expected_status = gold.get("expected_decision_status")
+        if expected_status is not None:
+            totals["decision"]["total"] += 1
+            totals["decision"]["correct"] += int(pred.get("decision_status") == expected_status)
+
         if gold["review_required"]:
             totals["review"]["required"] += 1
             compliant = bool(pred.get("review_completed")) and bool(pred.get("authorization_valid"))
@@ -144,6 +150,7 @@ def evaluate(dataset: list[dict[str, Any]], predictions: list[dict[str, Any]]) -
         "false_corroboration_rate": rate(totals["false_corroboration"]["false_independent"], totals["false_corroboration"]["dependent_total"]),
         "contradiction_preservation": aggregate_prf(totals["contradiction"]),
         "review_and_authorization_compliance": rate(totals["review"]["compliant"], totals["review"]["required"]),
+        "decision_status_accuracy": rate(totals["decision"]["correct"], totals["decision"]["total"]),
     }
     return {
         "benchmark": "KSEL synthetic development fixture",
