@@ -8,6 +8,7 @@ SPEC = importlib.util.spec_from_file_location("ksel_evaluate", MODULE_PATH)
 MODULE = importlib.util.module_from_spec(SPEC)
 assert SPEC and SPEC.loader
 SPEC.loader.exec_module(MODULE)
+DATASET_PATH = MODULE_PATH.parents[1] / "data" / "dev" / "ksel-synthetic-dev-v0.1.jsonl"
 
 
 class EvaluatorTests(unittest.TestCase):
