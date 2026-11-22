@@ -2,8 +2,11 @@ cff-version: 1.2.0
 message: "If you use or discuss this research, please cite the KSEL research-note series and identify the specific note and version."
 title: "KSEL Research Notes: Evidence Governance for Intelligent Systems"
 authors:
-  - name: "HEXYN LAB"
-    affiliation: "Independent research laboratory"
+  - given-names: "Kushal"
+    family-names: "Sunkur"
+    affiliation: "HEXYN LAB"
 type: software
+version: "0.1.3"
+doi: "10.5281/zenodo.24444766"
 repository-code: "https://github.com/Hexynlab/ksel-research-note-001"
 date-released: 2026-11-22
