@@ -1,6 +1,8 @@
 # KSEL Research Notes
 ## Evidence Governance for Intelligent Systems
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24444766.svg)](https://doi.org/10.5281/zenodo.24444766)
+
 **Institution:** HEXYN LAB  
 **Programme:** KSEL — Knowledge, Source, Evidence Layer  
 **Repository status:** Active public research publication  
@@ -159,6 +161,6 @@ Corrections and substantive revisions should be documented. Review status must b
 
 ## Citation
 
-HEXYN LAB. (2026). *KSEL Research Notes: Evidence Governance for Intelligent Systems*. HEXYN LAB Technical Research Series. https://github.com/Hexynlab/ksel-research-note-001
+Sunkur, K. (2026). *KSEL Research Notes: Evidence Governance for Intelligent Systems* (Version 0.1.3) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.24444766
 
-For a specific claim, cite the individual research note and version rather than only the repository landing page.
+The concept DOI above resolves to the latest version. For a version-specific citation, use the DOI displayed on that version's Zenodo record. For a specific claim, cite the individual research note and version rather than only the repository landing page.
