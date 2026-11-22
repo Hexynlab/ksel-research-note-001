@@ -548,7 +548,7 @@ These sources inform causal reasoning and decision analysis. They are included t
 
 1. Pearl, J. (2009). *Causality: Models, Reasoning, and Inference* (2nd ed.). Cambridge University Press. https://www.cambridge.org/9780521895606 — Structural causal models, interventions, and causal reasoning.
 2. Hernán, M. A., & Robins, J. M. (2020). *Causal Inference: What If*. Chapman & Hall/CRC. https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/ — Causal inference methods, assumptions, and longitudinal data.
-3. Keeney, R. L., & Raiffa, H. (1976). *Decisions with Multiple Objectives: Preferences and Value Tradeoffs*. Wiley. https://doi.org/10.1017/CBO9781139174084 — Objectives, constraints, and preference-sensitive decision analysis.
+3. Keeney, R. L., & Raiffa, H. (1993). *Decisions with Multiple Objectives: Preferences and Value Tradeoffs*. Cambridge University Press. https://doi.org/10.1017/CBO9781139174084 — Objectives, constraints, and preference-sensitive decision analysis.
 4. Howard, R. A. (1966). Information Value Theory. *IEEE Transactions on Systems Science and Cybernetics, 2*(1), 22–26. https://doi.org/10.1109/TSSC.1966.300074 — The value of information in decisions under uncertainty.
 
 ## Appendix D — Publication integrity statement
