@@ -25,9 +25,9 @@ They are not representative of real-world prevalence, domain difficulty, or oper
 From the repository root, with Python 3.10 or later:
 
 ```bash
-python evaluation/evaluate.py \
-  --dataset data/dev/ksel-synthetic-dev-v0.1.jsonl \
-  --predictions examples/predictions.example.jsonl
+python benchmark/evaluation/evaluate.py \
+  --dataset benchmark/data/dev/ksel-synthetic-dev-v0.1.jsonl \
+  --predictions benchmark/examples/predictions.example.jsonl
 ```
 
 The example file intentionally contains only one row and will fail completeness validation against the 12-case dataset. It is a format example, not a scored submission. Create one prediction row per dataset case before running a complete evaluation.\n\nRun the test suite with:\n\n```bash\npython -m unittest discover -s benchmark/evaluation -p "test_*.py" -v\n```
