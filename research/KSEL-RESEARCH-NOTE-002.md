@@ -451,7 +451,7 @@ Event names are illustrative. Implementations should define stable schemas, acto
 These sources inform the decision-theoretic and governance concepts discussed here. They do not establish a universally valid VOI formula or validate the KSEL proposals.
 
 1. Howard, R. A. (1966). Information Value Theory. *IEEE Transactions on Systems Science and Cybernetics, 2*(1), 22–26. https://doi.org/10.1109/TSSC.1966.300074 — Foundational treatment of the decision value of information.
-2. Keeney, R. L., & Raiffa, H. (1976). *Decisions with Multiple Objectives: Preferences and Value Tradeoffs*. Wiley. https://doi.org/10.1017/CBO9781139174084 — Multi-objective decision analysis and explicit value trade-offs.
+2. Keeney, R. L., & Raiffa, H. (1993). *Decisions with Multiple Objectives: Preferences and Value Tradeoffs*. Cambridge University Press. https://doi.org/10.1017/CBO9781139174084 — Multi-objective decision analysis and explicit value trade-offs.
 3. National Institute of Standards and Technology. (2023). *Artificial Intelligence Risk Management Framework (AI RMF 1.0)*. NIST AI 100-1. https://doi.org/10.6028/NIST.AI.100-1 — Risk-based governance and context-sensitive management.
 4. Hernán, M. A., & Robins, J. M. (2020). *Causal Inference: What If*. Chapman & Hall/CRC. https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/ — A reference for distinguishing decision evidence, causal assumptions, and uncertainty.
 
