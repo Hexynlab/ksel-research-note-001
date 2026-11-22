@@ -9,6 +9,7 @@
     "accepted_evidence_ids",
     "flagged_evidence_ids",
     "independent_pairs",
+    "dependent_pairs",
     "contradiction_pairs",
     "review_completed",
     "authorization_valid",
@@ -78,6 +79,12 @@
         "unsupported",
         "review_required"
       ]
+    },
+    "dependent_pairs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/pair"
+      }
     }
   },
   "$defs": {
