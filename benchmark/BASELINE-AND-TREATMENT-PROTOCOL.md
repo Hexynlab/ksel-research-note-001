@@ -44,7 +44,7 @@ If a control cannot be held constant, document the difference and explain how it
 
 ## 4. Adapter and scoring controls
 
-All conditions must emit the same prediction schema. The adapter must not silently add reasoning, repair missing evidence links, infer provenance, or otherwise improve one condition's output. Adapter code must be versioned and reviewed independently from the system under test.
+All conditions must emit the same prediction schema, including the optional `unresolved_pairs` state for explicit abstention. A pair omitted from all classification arrays is missing/unclassified, not an explicit abstention. The evaluator rejects duplicate/reversed pairs, self-pairs, overlapping classifications, unknown evidence IDs and predictions on unlabelled pairs. The adapter must not silently add reasoning, repair missing evidence links, infer provenance, or otherwise improve one condition's output. Adapter code must be versioned and reviewed independently from the system under test.
 
 The deterministic evaluator scores structured predictions only. It does not determine whether the model's internal reasoning was faithful to its output.
 
@@ -62,7 +62,7 @@ Ablations should remove one component at a time when interactions permit. If rem
 
 ## 6. Outcome reporting
 
-Report each metric separately, alongside latency, resource use and human review effort when measured. Do not select a single favourable metric as proof of overall superiority. Report false acceptance and false rejection together.
+Report each metric separately, alongside latency, resource use and human review effort when measured. Pair-level descriptive metrics use micro (pair-pooled) aggregation across cases; confirmatory uncertainty estimates must account for clustering of pairs within cases and be specified in the preregistration. Do not select a single favourable metric as proof of overall superiority. Report false acceptance and false rejection together.
 
 Do not claim KSEL caused an improvement unless the study design supports causal attribution. Results from the current public synthetic fixture are exploratory engineering checks only.
 
