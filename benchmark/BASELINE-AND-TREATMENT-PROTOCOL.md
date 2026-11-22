@@ -66,18 +66,34 @@ Report each metric separately, alongside latency, resource use and human review 
 
 Do not claim KSEL caused an improvement unless the study design supports causal attribution. Results from the current public synthetic fixture are exploratory engineering checks only.
 
-## 7. Prerequisites for a confirmatory study
+## 7. Independent annotation and adjudication
+
+For confirmatory datasets with human gold labels:
+
+1. At least two annotators independently label each relevant item before discussion.
+2. Record relevant experience, training and conflicts of interest for each annotator.
+3. Publish annotation instructions, operational definitions, examples and allowed labels before annotation.
+4. Keep annotators blind to system condition and model outputs where feasible.
+5. Preserve original labels and report disagreement; do not silently replace them with consensus.
+6. Report raw agreement and an appropriate chance-corrected statistic where suitable, with its assumptions.
+7. Use a separately identified adjudicator or panel for disagreements and retain the rationale.
+8. Preserve ambiguous, uncertain or unresolved cases rather than forcing unsupported binary labels.
+9. Clearly distinguish author-created development labels from independently reviewed confirmatory labels.
+
+The public v0.2.0 synthetic fixture is hand-authored and has not undergone this procedure. Its labels are development annotations only.
+
+## 8. Prerequisites for a confirmatory study
 
 Before confirmatory runs:
 1. Implement and version B0, B1 and K1.
 2. Freeze prompts, adapters, tools, models and resource budgets.
 3. Validate the scoring pipeline with hand-constructed fixtures.
-4. Obtain independent review of scenario labels.
+4. Complete independent annotation and adjudication under Section 7.
 5. Define sample-size rationale and primary outcomes.
 6. Establish a held-out evaluation strategy.
 7. Publish a completed preregistration.
 8. Record the exact code and dataset commit hashes.
 
-## 8. Current status
+## 9. Current status
 
 As of version 0.1.0, these conditions are specifications only. No baseline or KSEL treatment has been implemented or run as part of RN-008.
