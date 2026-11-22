@@ -92,6 +92,15 @@ class EvaluatorTests(unittest.TestCase):
         self.assertEqual(result["metrics"]["dependent_pair_detection"]["recall"], 0.0)
         self.assertEqual(result["metrics"]["independent_pair_detection"]["recall"], 0.0)
 
+    def test_unlabelled_source_dependence_pair_is_rejected(self):
+        prediction = [{
+            "case_id": "C-1",
+            "independent_pairs": [{"evidence_a": "E-1", "evidence_b": "E-3"}],
+            "dependent_pairs": [],
+        }]
+        with self.assertRaisesRegex(ValueError, "unlabelled evidence pair"):
+            MODULE.evaluate(self.dataset, prediction)
+
     def test_pair_cannot_be_both_dependent_and_independent(self):
         prediction = [{
             "case_id": "C-1",
