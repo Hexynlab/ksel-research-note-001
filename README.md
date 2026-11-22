@@ -117,6 +117,10 @@ The series distinguishes source evidence, claims, inference and recommendations.
     └── KSEL-RESEARCH-NOTE-008.md
 ```
 
+## RN-008 experimental artefacts
+
+The [RN-008 experimental starter kit](benchmark/README.md) contains a transparent synthetic development fixture, prediction schema, deterministic evaluator, benchmark specification and preregistration template. Its 12 fictional cases are for development only and are not a validated or blind benchmark.
+
 ## Research integrity
 
 H3XYN LAB aims to make research claims proportionate to available evidence. Empirical work should document methods, assumptions, baselines, limitations and reproducibility information. No experimental result should be inferred from the existence of a proposed framework or protocol.

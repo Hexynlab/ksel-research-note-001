@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "KSEL RN-008 prediction record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "case_id",
+    "traceability_links",
+    "accepted_evidence_ids",
+    "flagged_evidence_ids",
+    "independent_pairs",
+    "contradiction_pairs",
+    "review_completed",
+    "authorization_valid",
+    "decision_status"
+  ],
+  "properties": {
+    "case_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "traceability_links": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "claim_id",
+          "evidence_id"
+        ],
+        "properties": {
+          "claim_id": {
+            "type": "string"
+          },
+          "evidence_id": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "accepted_evidence_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "flagged_evidence_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "independent_pairs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/pair"
+      }
+    },
+    "contradiction_pairs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/pair"
+      }
+    },
+    "review_completed": {
+      "type": "boolean"
+    },
+    "authorization_valid": {
+      "type": "boolean"
+    },
+    "decision_status": {
+      "type": "string",
+      "enum": [
+        "supported",
+        "uncertain",
+        "unsupported",
+        "review_required"
+      ]
+    }
+  },
+  "$defs": {
+    "pair": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evidence_a",
+        "evidence_b"
+      ],
+      "properties": {
+        "evidence_a": {
+          "type": "string"
+        },
+        "evidence_b": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

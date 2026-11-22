@@ -1,0 +1,27 @@
+name: RN-008 benchmark checks
+
+on:
+  push:
+    paths:
+      - "benchmark/**"
+      - ".github/workflows/rn008-benchmark.yml"
+  pull_request:
+    paths:
+      - "benchmark/**"
+      - ".github/workflows/rn008-benchmark.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run evaluator and dataset tests
+        run: python -m unittest discover -s benchmark/evaluation -p "test_*.py" -v
