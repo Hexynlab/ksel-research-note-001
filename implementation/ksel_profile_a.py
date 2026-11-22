@@ -35,9 +35,9 @@ DECISION_STATE = {
     "escalate": "review_required",
 }
 DEFAULT_REQUIRED_ROLES = {
-    "approved": {"reviewer", "approver"},
-    "qualified": {"reviewer", "approver"},
-    "rejected": {"reviewer", "approver"},
+    "approved": {"approver"},
+    "qualified": {"approver"},
+    "rejected": {"approver"},
     "superseded": {"owner", "maintainer"},
     "evidence_linked": {"analyst", "reviewer", "owner", "maintainer"},
     "review_required": {"analyst", "reviewer", "approver", "owner", "maintainer"},
