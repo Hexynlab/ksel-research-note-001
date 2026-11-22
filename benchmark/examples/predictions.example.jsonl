@@ -1,0 +1,1 @@
+{"case_id":"KSEL-DEV-001","traceability_links":[{"claim_id":"C1","evidence_id":"E1"},{"claim_id":"C1","evidence_id":"E2"}],"accepted_evidence_ids":["E1","E2"],"flagged_evidence_ids":[],"independent_pairs":[],"contradiction_pairs":[],"review_completed":false,"authorization_valid":false}
