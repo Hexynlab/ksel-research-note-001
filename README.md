@@ -46,6 +46,13 @@ Proposes a decision-intelligence layer connecting governed evidence to objective
 
 [Read Research Note 005](research/KSEL-RESEARCH-NOTE-005.md)
 
+### KSEL Research Note 006
+**Temporal Intelligence, Evidence Evolution, and Continuous Knowledge Validation**
+
+Proposes a temporal governance layer that distinguishes event, observation, publication, ingestion, assessment, valid time, and record time. Develops context-dependent freshness policies, version continuity, change classification, revalidation triggers, dependency-aware impact analysis, historical reconstruction, and a falsifiable evaluation programme.
+
+[Read Research Note 006](research/KSEL-RESEARCH-NOTE-006.md)
+
 ## Research position
 
 These publications are preliminary research frameworks. Their hypotheses and evaluation measures are proposed for future testing; they are not presented as validated findings, certified standards, or proof of system performance.
@@ -54,16 +61,15 @@ The series distinguishes source evidence, claims, inference, and recommendations
 
 ## Repository structure
 
-```text
-.
-├── README.md
-└── research/
-    ├── KSEL-RESEARCH-NOTE-001.md
-    ├── KSEL-RESEARCH-NOTE-002.md
-    ├── KSEL-RESEARCH-NOTE-003.md
-    ├── KSEL-RESEARCH-NOTE-004.md
-    └── KSEL-RESEARCH-NOTE-005.md
-```
+    .
+    ├── README.md
+    └── research/
+        ├── KSEL-RESEARCH-NOTE-001.md
+        ├── KSEL-RESEARCH-NOTE-002.md
+        ├── KSEL-RESEARCH-NOTE-003.md
+        ├── KSEL-RESEARCH-NOTE-004.md
+        ├── KSEL-RESEARCH-NOTE-005.md
+        └── KSEL-RESEARCH-NOTE-006.md
 
 ## Research integrity
 
@@ -71,4 +77,4 @@ H3XYN LAB aims to make research claims proportionate to available evidence. Futu
 
 ## Citation
 
-H3XYN LAB. (2026). *KSEL Research Notes 001–005*. H3XYN LAB Technical Research Notes. Repository: https://github.com/Hexynlab/ksel-research-note-001
+H3XYN LAB. (2026). *KSEL Research Notes 001–006*. H3XYN LAB Technical Research Notes. Repository: https://github.com/Hexynlab/ksel-research-note-001
