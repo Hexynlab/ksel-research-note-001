@@ -85,6 +85,13 @@
       "items": {
         "$ref": "#/$defs/pair"
       }
+    },
+    "unresolved_pairs": {
+      "type": "array",
+      "description": "Evidence pairs for which source dependence cannot be determined from available evidence; abstention, not a claim of independence.",
+      "items": {
+        "$ref": "#/$defs/pair"
+      }
     }
   },
   "$defs": {
