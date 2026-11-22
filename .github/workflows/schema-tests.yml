@@ -31,3 +31,6 @@ jobs:
 
       - name: Run release-governance validation tests
         run: python -m unittest discover -s scripts -p "test_*.py" -v
+
+      - name: Validate current repository release metadata
+        run: python scripts/validate_release.py --tag "v$(cat VERSION)"
