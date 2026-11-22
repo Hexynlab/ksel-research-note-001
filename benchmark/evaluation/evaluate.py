@@ -190,7 +190,7 @@ def evaluate(dataset: list[dict[str, Any]], predictions: list[dict[str, Any]]) -
     }
     return {
         "benchmark": "KSEL synthetic development fixture",
-        "dataset_version": "0.1.0",
+        "dataset_version": "0.2.0",
         "cases": len(dataset),
         "metrics": metrics,
         "counts": totals,
