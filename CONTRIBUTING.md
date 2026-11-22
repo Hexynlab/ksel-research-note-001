@@ -39,6 +39,10 @@ Submissions may be discussed, revised, deferred or declined. A contribution does
 
 Changes intended for a release must follow the [KSEL Release Governance Policy](governance/RELEASE-GOVERNANCE.md). Update the root `CHANGELOG.md` for material repository changes, preserve individual research-note version histories, and use the [release checklist](governance/RELEASE-CHECKLIST.md) before proposing a release. Do not move or reuse a published release tag.
 
+## Licensing contributions
+
+The repository uses Apache 2.0 for software contributions and CC BY 4.0 for research documentation and data, as described in [LICENSING.md](LICENSING.md). By submitting material for inclusion, you confirm that you have the necessary rights and agree that accepted material may be distributed under the applicable repository licence. You retain ownership of your contribution. If your contribution contains third-party material or requires different terms, disclose this clearly and obtain approval before submission. Do not assume that submitting a pull request transfers copyright ownership to H3XYN LAB.
+
 ## Scope
 
 This repository is for KSEL research. Other H3XYN LAB programmes should use their own repositories and governance unless a contribution directly concerns KSEL.
