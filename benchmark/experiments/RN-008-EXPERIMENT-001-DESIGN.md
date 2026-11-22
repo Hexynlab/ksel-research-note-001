@@ -105,7 +105,7 @@ Annotator qualifications, training and conflicts of interest must be recorded in
 
 **False-independence rate:** the proportion of gold-labelled dependent evidence pairs that a system predicts as independent.
 
-The existing evaluator exposes this as `false_independence_rate`. Its denominator is the number of adjudicated dependent pairs. The implementation and aggregation must be checked against the frozen dataset and prediction contract before confirmatory use.
+The evaluator exposes this as `false_independence_rate`. Its denominator is the number of adjudicated dependent pairs. The primary descriptive estimate is micro-aggregated by pooling eligible evidence pairs across cases; the same aggregation rule applies to secondary pair-level rates and PRF counts. Because pairs are clustered within cases, confirmatory uncertainty estimates and hypothesis tests must account for case-level clustering (or justify an alternative) in the preregistration. Pair-pooled descriptive metrics must not be interpreted as if every pair were an independent sampling unit.
 
 ### 7.2 Secondary outcomes
 
@@ -114,14 +114,14 @@ Report, at minimum:
 - dependent-pair precision, recall and F1;
 - independent-pair precision, recall and F1;
 - false-dependence rate;
-- unresolved/abstained classification rate, if supported by the frozen prediction contract;
+- explicit unresolved-prediction rate and source-dependence classification coverage; the denominator for both is all explicitly labelled gold pairs. Missing classifications reduce coverage but are not counted as explicit unresolved predictions;
 - performance by lineage scenario family;
 - invalid or unlabelled pair handling;
 - latency and resource use, where measured.
 
 A lower false-independence rate alone is not sufficient to establish overall superiority. False-dependence errors and the treatment's ability to retain genuinely independent pairs must be reported alongside it.
 
-If the current prediction schema or evaluator cannot represent unresolved classifications, this limitation must be resolved and versioned before preregistration, not patched after confirmatory results are observed.
+The current prediction contract supports explicit `unresolved_pairs`. The evaluator distinguishes explicit abstention from omission: explicit unresolved predictions are counted in the unresolved rate, while omitted labelled pairs reduce classification coverage only. These definitions must not be changed after confirmatory results are observed.
 
 ## 8. Fairness and execution controls
 
@@ -146,7 +146,7 @@ The following decisions remain open and must be justified and frozen before conf
 1. Confirmatory dataset size and composition, with a sample-size rationale.
 2. Exact system, model, prompt, adapter and code versions for B0, B1 and K1.
 3. Randomisation or execution-order method and run/repetition policy.
-4. Primary aggregation method and statistical uncertainty procedure, accounting for pairs clustered within cases where appropriate.
+4. Case-clustered uncertainty estimation and hypothesis-testing procedure for the pair-pooled descriptive primary outcome; the evaluator’s descriptive aggregation is frozen as micro (pair-pooled) across cases.
 5. Missing-output and failed-run handling.
 6. Practical significance threshold, if one is justified.
 7. Multiple-comparison handling for secondary and subgroup analyses.
