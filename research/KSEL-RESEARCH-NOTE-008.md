@@ -361,6 +361,16 @@ RN-008 establishes a proposed framework for that work. It makes no claim that ex
 
 ---
 
+## Selected references and related work
+
+These works inform benchmark construction, documentation, reproducibility, and adaptive-system evaluation. They are methodological references, not evidence that KSEL has achieved any benchmark result.
+
+1. Pineau, J., et al. (2021). Improving Reproducibility in Machine Learning Research: A Report from the NeurIPS 2019 Reproducibility Program. *Journal of Machine Learning Research, 22*(164), 1–20. https://www.jmlr.org/papers/v22/20-303.html — Reproducibility practices and reporting in machine-learning research.
+2. Dodge, J., et al. (2019). Show Your Work: Improved Reporting of Experimental Results. In *Proceedings of EMNLP-IJCNLP 2019*, 2185–2194. https://doi.org/10.18653/v1/D19-1224 — Reporting experimental conditions and computational requirements.
+3. Gebru, T., et al. (2021). Datasheets for Datasets. *Communications of the ACM, 64*(12), 86–92. https://doi.org/10.1145/3458723 — Dataset documentation and intended-use transparency.
+4. Mitchell, M., et al. (2019). Model Cards for Model Reporting. *Proceedings of the Conference on Fairness, Accountability, and Transparency*, 220–229. https://doi.org/10.1145/3287560.3287596 — Documentation of model evaluation and limitations.
+5. Gama, J., et al. (2014). A survey on concept drift adaptation. *ACM Computing Surveys, 46*(4), Article 44. https://doi.org/10.1145/2523813 — Evaluation of adaptation under changing data distributions.
+
 ## Publication and research integrity statement
 
 This document is a preliminary experimental protocol developed for the KSEL research-note series of H3XYN LAB. Its hypotheses, scenario families, metrics, comparison conditions and procedures are proposals for investigation.
@@ -368,3 +378,7 @@ This document is a preliminary experimental protocol developed for the KSEL rese
 No experiment, benchmark result, statistical finding, independent review, production deployment or validation is claimed. Any future report must identify the exact protocol version used, disclose deviations and distinguish exploratory analysis from confirmatory findings.
 
 **End of KSEL Research Note 008.**
+
+**Suggested citation**
+
+H3XYN LAB. (2026). *KSEL Research Note 008: Empirical Evaluation of Evidence Governance in Intelligent Systems* (Version 0.1.0). H3XYN LAB Technical Research Notes. https://github.com/Hexynlab/ksel-research-note-001
