@@ -67,6 +67,9 @@ def validate_records(records: Iterable[Mapping[str, Any]],
     errors: list[str] = []
 
     for position, raw in enumerate(records):
+        if not isinstance(raw, Mapping):
+            errors.append(f"record[{position}] must be a mapping/object")
+            continue
         record = deepcopy(dict(raw))
         for error in validator.iter_errors(record):
             location = ".".join(str(part) for part in error.absolute_path) or "<root>"
@@ -77,6 +80,12 @@ def validate_records(records: Iterable[Mapping[str, Any]],
                 errors.append(f"duplicate record id: {record_id}")
             else:
                 indexed[record_id] = record
+
+    # Do not run relational logic on malformed shapes: invalid nested values can
+    # otherwise cause incidental TypeError/AttributeError instead of a stable
+    # KSELValidationError. Shape and identity errors are reported first.
+    if errors:
+        raise KSELValidationError("Profile A validation failed:\\n- " + "\\n- ".join(errors))
 
     def require_ref(owner: str, field: str, target: Any,
                     expected_type: str | None = None) -> None:
@@ -173,15 +182,16 @@ def transition_claim(claim: Mapping[str, Any], new_state: str, *,
     current = updated.get("review_state")
     if new_state not in ALLOWED_TRANSITIONS.get(current, set()):
         raise KSELTransitionError(f"transition {current!r} -> {new_state!r} is not allowed")
-    role_policy = required_roles or DEFAULT_REQUIRED_ROLES
+    role_policy = DEFAULT_REQUIRED_ROLES if required_roles is None else required_roles
     permitted = role_policy.get(new_state, set())
+    if not isinstance(actor, str) or not actor.strip():
+        raise KSELTransitionError("actor identity must be a non-empty string")
+    if not isinstance(actor_role, str) or not actor_role:
+        raise KSELTransitionError("actor role must be a non-empty string")
     if actor_role not in permitted:
         raise KSELTransitionError(
             f"role {actor_role!r} is not permitted to set state {new_state!r}"
         )
-    if not actor or not actor.strip():
-        raise KSELTransitionError("actor identity must be non-empty")
-
     if new_state in {"approved", "qualified", "rejected"}:
         if review is None:
             raise KSELTransitionError("a review record is required for this decision")
