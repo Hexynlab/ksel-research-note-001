@@ -16,6 +16,12 @@ This repository publishes the KSEL research-note series and its supporting resea
 
 ---
 
+## Licensing and reuse
+
+KSEL is open for commercial and non-commercial reuse, subject to attribution and the applicable licence. Software and machine-readable implementation artefacts are licensed under **Apache 2.0**. Research notes, governance and explanatory documentation, and the published synthetic/example datasets are licensed under **CC BY 4.0**. In both cases, attribution to **H3XYN LAB** is required under the licence terms.
+
+See [LICENSING.md](LICENSING.md) for the exact file scope, attribution guidance, and third-party-material exclusions; see [LICENSE](LICENSE) and [LICENSE-DOCS](LICENSE-DOCS) for the full licence texts.
+
 ## Start here
 
 | Resource | Purpose |
