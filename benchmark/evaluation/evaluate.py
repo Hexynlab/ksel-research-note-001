@@ -95,6 +95,7 @@ def evaluate(dataset: list[dict[str, Any]], predictions: list[dict[str, Any]]) -
             "evaluated_total": 0,
             "unresolved_on_ambiguous_or_conflicting": 0,
             "confident_on_ambiguous_or_conflicting": 0,
+            "ambiguous_or_conflicting_total": 0,
         },
         "contradiction": {"tp": 0, "fp": 0, "fn": 0},
         "review": {"compliant": 0, "required": 0},
@@ -134,6 +135,9 @@ def evaluate(dataset: list[dict[str, Any]], predictions: list[dict[str, Any]]) -
         predicted_independent = pair_set(pred.get("independent_pairs", []), "evidence_a", "evidence_b")
         predicted_unresolved = pair_set(pred.get("unresolved_pairs", []), "evidence_a", "evidence_b")
         prediction_sets = [predicted_dependent, predicted_independent, predicted_unresolved]
+        overlap_resolved = predicted_dependent & predicted_independent
+        if overlap_resolved:
+            raise ValueError(f"Pairs cannot be classified as both dependent and independent: {sorted(overlap_resolved)}")
         for index, left in enumerate(prediction_sets):
             for right in prediction_sets[index + 1:]:
                 overlap = left & right
@@ -156,6 +160,7 @@ def evaluate(dataset: list[dict[str, Any]], predictions: list[dict[str, Any]]) -
         totals["source_dependence"]["classified_total"] += len(set.union(*prediction_sets))
         totals["source_dependence"]["evaluated_total"] += len(known_pairs)
         uncertain_gold = ambiguous | conflicting
+        totals["source_dependence"]["ambiguous_or_conflicting_total"] += len(uncertain_gold)
         totals["source_dependence"]["unresolved_on_ambiguous_or_conflicting"] += len(predicted_unresolved & uncertain_gold)
         totals["source_dependence"]["confident_on_ambiguous_or_conflicting"] += len((predicted_dependent | predicted_independent) & uncertain_gold)
         # Binary metrics use only adjudicated dependent/independent gold pairs.
@@ -210,8 +215,8 @@ def evaluate(dataset: list[dict[str, Any]], predictions: list[dict[str, Any]]) -
         "false_dependence_rate": rate(totals["source_dependence"]["false_dependent"], totals["source_dependence"]["independent_total"]),
         "unresolved_prediction_rate": rate(totals["source_dependence"]["unresolved_predicted"], totals["source_dependence"]["evaluated_total"]),
         "source_dependence_classification_coverage": rate(totals["source_dependence"]["classified_total"], totals["source_dependence"]["evaluated_total"]),
-        "unresolved_recall_on_ambiguous_or_conflicting": rate(totals["source_dependence"]["unresolved_on_ambiguous_or_conflicting"], totals["source_dependence"]["evaluated_total"] if False else sum(len(pair_set(row["gold"].get("ambiguous_pairs", []))) + len(pair_set(row["gold"].get("conflicting_pairs", []))) for row in dataset)),
-        "confident_classification_rate_on_ambiguous_or_conflicting": rate(totals["source_dependence"]["confident_on_ambiguous_or_conflicting"], sum(len(pair_set(row["gold"].get("ambiguous_pairs", []))) + len(pair_set(row["gold"].get("conflicting_pairs", []))) for row in dataset)),
+        "unresolved_recall_on_ambiguous_or_conflicting": rate(totals["source_dependence"]["unresolved_on_ambiguous_or_conflicting"], totals["source_dependence"]["ambiguous_or_conflicting_total"]),
+        "confident_classification_rate_on_ambiguous_or_conflicting": rate(totals["source_dependence"]["confident_on_ambiguous_or_conflicting"], totals["source_dependence"]["ambiguous_or_conflicting_total"]),
         "contradiction_preservation": aggregate_prf(totals["contradiction"]),
         "review_and_authorization_compliance": rate(totals["review"]["compliant"], totals["review"]["required"]),
         "decision_status_accuracy": rate(totals["decision"]["correct"], totals["decision"]["total"]),
