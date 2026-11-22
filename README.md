@@ -143,7 +143,7 @@ The [KSEL Implementation and Evaluation Framework](implementation/KSEL-IMPLEMENT
 
 ## RN-008 experimental artefacts
 
-The [RN-008 experimental starter kit](benchmark/README.md) contains a transparent synthetic development fixture, prediction schema, deterministic evaluator, benchmark specification and preregistration template. Its 12 fictional cases are for development only and are not a validated or blind benchmark.
+The [RN-008 experimental starter kit](benchmark/README.md) contains a transparent synthetic development fixture, prediction schema, deterministic evaluator, benchmark specification and preregistration template. Its 15 fictional cases are for development only and are not a validated or blind benchmark.
 
 ## Release process
 
