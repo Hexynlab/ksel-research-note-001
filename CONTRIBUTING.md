@@ -28,6 +28,8 @@ For proposed experiments, include the research question, comparison condition, m
 - Do not include credentials, secrets or exploit-enabling details.
 - Disclose relevant conflicts of interest.
 - Do not claim endorsement or authorship without agreement.
+- Verify bibliographic details and cite original or authoritative sources where possible.
+- Do not present a citation as proof of a claim unless the cited work actually supports it.
 
 ## How to submit
 
@@ -41,7 +43,9 @@ Changes intended for a release must follow the [KSEL Release Governance Policy](
 
 ## Licensing contributions
 
-The repository uses Apache 2.0 for software contributions and CC BY 4.0 for research documentation and data, as described in [LICENSING.md](LICENSING.md). By submitting material for inclusion, you confirm that you have the necessary rights and agree that accepted material may be distributed under the applicable repository licence. You retain ownership of your contribution. If your contribution contains third-party material or requires different terms, disclose this clearly and obtain approval before submission. Do not assume that submitting a pull request transfers copyright ownership to H3XYN LAB.
+The repository uses Apache 2.0 for specified software files and CC BY 4.0 for specified research documentation and examples, as described in [LICENSING.md](LICENSING.md). By submitting material for inclusion, you confirm that you have the necessary rights and agree that accepted material may be distributed under the applicable repository licence. You retain ownership of your contribution. If your contribution contains third-party material or requires different terms, disclose this clearly and obtain approval before submission. Do not assume that submitting a pull request transfers copyright ownership to H3XYN LAB.
+
+For AI-assisted contributions, the submitter must review the output, check the applicable tool terms, and ensure that the contribution does not knowingly include third-party material or restrictions incompatible with the proposed licence. This guide does not determine copyright ownership or replace legal advice.
 
 ## Scope
 

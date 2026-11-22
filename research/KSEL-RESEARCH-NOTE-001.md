@@ -432,10 +432,19 @@ A practical claim record may contain:
 
 ---
 
+## Selected references and related work
+
+The following sources provide relevant foundations for provenance, AI governance, and documentation. They are context for the proposed KSEL framework, not evidence that KSEL itself has been validated.
+
+1. W3C. (2013). *PROV-O: The PROV Ontology*. W3C Recommendation. https://www.w3.org/TR/prov-o/ — A standard vocabulary for representing provenance entities, activities, and agents.
+2. National Institute of Standards and Technology. (2023). *Artificial Intelligence Risk Management Framework (AI RMF 1.0)*. NIST AI 100-1. https://doi.org/10.6028/NIST.AI.100-1 — A risk-management framework relevant to governance, measurement, and oversight.
+3. Mitchell, M., et al. (2019). Model Cards for Model Reporting. *Proceedings of the Conference on Fairness, Accountability, and Transparency*, 220–229. https://doi.org/10.1145/3287560.3287596 — Documentation of intended use and model evaluation characteristics.
+4. Gebru, T., et al. (2021). Datasheets for Datasets. *Communications of the ACM, 64*(12), 86–92. https://doi.org/10.1145/3458723 — Dataset documentation covering motivation, composition, collection, and use.
+
 ## Publication and integrity statement
 
 This document describes a proposed research framework. It does not report completed validation experiments, certify an implementation, or claim compliance with any external standard. Any future empirical findings should be published with methods, datasets or dataset descriptions, evaluation criteria, limitations, and reproducibility information sufficient for independent scrutiny.
 
 **Suggested citation**
 
-H3XYN LAB. (2026). *KSEL Research Note 001: Evidence Governance, Uncertainty Management, and Review Controls for Intelligent Systems* (Version 0.1.0). H3XYN LAB Technical Research Notes. https://github.com/nofuxgvnwiring-source/ksel-research-note-001
+H3XYN LAB. (2026). *KSEL Research Note 001: Evidence Governance, Uncertainty Management, and Review Controls for Intelligent Systems* (Version 0.1.0). H3XYN LAB Technical Research Notes. https://github.com/Hexynlab/ksel-research-note-001

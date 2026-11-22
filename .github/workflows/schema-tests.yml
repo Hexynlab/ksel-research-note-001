@@ -2,6 +2,8 @@ name: KSEL public validation suite
 
 on:
   push:
+    branches:
+      - main
   pull_request:
 
 permissions:
@@ -12,13 +14,21 @@ jobs:
     name: schema-tests
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v4
+      - name: Check out full repository history
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
         with:
           python-version: "3.12"
+
+      - name: Scan full Git history for exposed secrets
+        uses: gitleaks/gitleaks-action@e0c47f4f8be36e29cdc102c57e68cb5cbf0e8d1e
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITLEAKS_ENABLE_COMMENTS: "false"
 
       - name: Install schema validation dependency
         run: python -m pip install -r implementation/requirements-dev.txt
