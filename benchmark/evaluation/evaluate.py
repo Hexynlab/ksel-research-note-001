@@ -49,14 +49,36 @@ def pair_set(values: list[Any], key_a: str | None = None, key_b: str | None = No
     return result
 
 
-def prf(predicted: set[Any], expected: set[Any]) -> dict[str, float | int]:
+def prf(predicted: set[Any], expected: set[Any]) -> dict[str, float | int | None]:
     tp = len(predicted & expected)
     fp = len(predicted - expected)
     fn = len(expected - predicted)
-    precision = tp / (tp + fp) if tp + fp else (1.0 if not expected else 0.0)
-    recall = tp / (tp + fn) if tp + fn else (1.0 if not predicted else 0.0)
-    f1 = 2 * precision * recall / (precision + recall) if precision + recall else 0.0
+    precision = tp / (tp + fp) if tp + fp else None
+    recall = tp / (tp + fn) if tp + fn else None
+    f1 = (
+        2 * precision * recall / (precision + recall)
+        if precision is not None and recall is not None and precision + recall
+        else (0.0 if precision == 0.0 or recall == 0.0 else None)
+    )
     return {"tp": tp, "fp": fp, "fn": fn, "precision": precision, "recall": recall, "f1": f1}
+
+
+def validate_prediction_records(predictions: list[dict[str, Any]], source: str = "predictions") -> None:
+    """Validate submitted records against the versioned public JSON Schema."""
+    try:
+        from jsonschema import Draft202012Validator
+    except ImportError as exc:
+        raise RuntimeError("Prediction schema validation requires the 'jsonschema' package.") from exc
+    schema_path = Path(__file__).resolve().parents[1] / "schemas" / "prediction.schema.json"
+    schema = json.loads(schema_path.read_text(encoding="utf-8"))
+    validator = Draft202012Validator(schema)
+    errors = []
+    for index, prediction in enumerate(predictions, 1):
+        for error in validator.iter_errors(prediction):
+            location = ".".join(str(part) for part in error.absolute_path) or "<record>"
+            errors.append(f"{source}:record {index}:{location}: {error.message}")
+    if errors:
+        raise ValueError("Prediction schema validation failed:\\n" + "\\n".join(errors))
 
 
 def rate(numerator: int, denominator: int) -> float | None:
@@ -232,10 +254,14 @@ def evaluate(dataset: list[dict[str, Any]], predictions: list[dict[str, Any]]) -
     }
 
 
-def prf_from_counts(tp: int, fp: int, fn: int) -> dict[str, float | int]:
-    precision = tp / (tp + fp) if tp + fp else (1.0 if fn == 0 else 0.0)
-    recall = tp / (tp + fn) if tp + fn else (1.0 if fp == 0 else 0.0)
-    f1 = 2 * precision * recall / (precision + recall) if precision + recall else 0.0
+def prf_from_counts(tp: int, fp: int, fn: int) -> dict[str, float | int | None]:
+    precision = tp / (tp + fp) if tp + fp else None
+    recall = tp / (tp + fn) if tp + fn else None
+    f1 = (
+        2 * precision * recall / (precision + recall)
+        if precision is not None and recall is not None and precision + recall
+        else (0.0 if precision == 0.0 or recall == 0.0 else None)
+    )
     return {"tp": tp, "fp": fp, "fn": fn, "precision": precision, "recall": recall, "f1": f1}
 
 
@@ -245,7 +271,9 @@ def main() -> None:
     parser.add_argument("--predictions", required=True, type=Path)
     parser.add_argument("--output", type=Path)
     args = parser.parse_args()
-    report = evaluate(read_jsonl(args.dataset), read_jsonl(args.predictions))
+    predictions = read_jsonl(args.predictions)
+    validate_prediction_records(predictions, str(args.predictions))
+    report = evaluate(read_jsonl(args.dataset), predictions)
     rendered = json.dumps(report, indent=2, ensure_ascii=False) + "\n"
     if args.output:
         args.output.write_text(rendered, encoding="utf-8")
