@@ -148,7 +148,7 @@
             "origin_status",
             "access_class"
           ],
-          "additionalProperties": false
+          "unevaluatedProperties": false
         }
       ]
     },
@@ -259,7 +259,7 @@
             "integrity_status",
             "relevance_status"
           ],
-          "additionalProperties": false
+          "unevaluatedProperties": false
         }
       ]
     },
@@ -386,7 +386,7 @@
             "evidence_links",
             "review_state"
           ],
-          "additionalProperties": false
+          "unevaluatedProperties": false
         }
       ]
     },
@@ -494,7 +494,7 @@
             "resolution_condition",
             "status"
           ],
-          "additionalProperties": false
+          "unevaluatedProperties": false
         }
       ]
     },
@@ -639,7 +639,7 @@
             "evidence_snapshot",
             "reviewed_at"
           ],
-          "additionalProperties": false
+          "unevaluatedProperties": false
         }
       ]
     },
@@ -737,7 +737,7 @@
             "event_time",
             "record_time"
           ],
-          "additionalProperties": false
+          "unevaluatedProperties": false
         }
       ]
     }
