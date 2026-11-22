@@ -58,6 +58,17 @@ class PredictionSchemaTests(unittest.TestCase):
         prediction = dict(self.examples[0], unresolved_pairs=[{"evidence_a": "E1"}])
         self.assertTrue(list(self.validator.iter_errors(prediction)))
 
+    def test_empty_pair_identifier_is_rejected(self):
+        prediction = dict(self.examples[0], independent_pairs=[{"evidence_a": "", "evidence_b": "E-2"}])
+        self.assertTrue(list(self.validator.iter_errors(prediction)))
+
+    def test_evaluator_schema_validation_rejects_invalid_record(self):
+        from evaluate import validate_prediction_records
+        prediction = dict(self.examples[0])
+        prediction.pop("decision_status")
+        with self.assertRaisesRegex(ValueError, "Prediction schema validation failed"):
+            validate_prediction_records([prediction], "fixture.jsonl")
+
     def test_malformed_pair_is_rejected(self):
         prediction = dict(self.examples[0])
         prediction["independent_pairs"] = [{"evidence_a": "E-1", "unexpected": "E-2"}]
