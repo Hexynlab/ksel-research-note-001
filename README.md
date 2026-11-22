@@ -103,7 +103,8 @@ The series distinguishes source evidence, claims, inference and recommendations.
 .
 ├── .github/workflows/
 │   ├── release.yml
-│   └── schema-tests.yml
+│   ├── schema-tests.yml
+│   └── secret-scan.yml
 ├── benchmark/
 ├── governance/
 │   ├── PUBLIC-DISCLOSURE-POLICY.md
@@ -112,6 +113,10 @@ The series distinguishes source evidence, claims, inference and recommendations.
 │   ├── RELEASE-GOVERNANCE.md
 │   ├── REPRODUCIBILITY-STANDARD.md
 │   └── RESEARCH-INTEGRITY.md
+├── implementation/
+│   ├── Profile A reference engine
+│   ├── schemas, examples and tests
+│   └── black-box conformance suite
 ├── research/
 ├── scripts/
 │   ├── test_validate_release.py
