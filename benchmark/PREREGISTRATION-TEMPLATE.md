@@ -56,7 +56,7 @@ Complete, timestamp and publish this document before confirmatory runs. Do not b
 For each primary and secondary metric, define:
 - operational definition;
 - direction of improvement;
-- aggregation;
+- aggregation (pair-level descriptive metrics are micro-aggregated across cases; specify case-clustered uncertainty/inference);\n- explicit unresolved predictions versus omitted/unclassified pairs;
 - missing-data handling;
 - practical significance threshold;
 - uncertainty/statistical method.
