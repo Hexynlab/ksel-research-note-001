@@ -40,7 +40,12 @@ def pair_set(values: list[Any], key_a: str | None = None, key_b: str | None = No
             raise ValueError(f"Invalid pair: {value!r}")
         if not isinstance(a, str) or not isinstance(b, str):
             raise ValueError(f"Pair members must be strings: {value!r}")
-        result.add(tuple(sorted((a, b))))
+        pair = tuple(sorted((a, b)))
+        if pair[0] == pair[1]:
+            raise ValueError(f"Pair members must be different: {value!r}")
+        if pair in result:
+            raise ValueError(f"Duplicate pair: {value!r}")
+        result.add(pair)
     return result
 
 
@@ -78,7 +83,14 @@ def evaluate(dataset: list[dict[str, Any]], predictions: list[dict[str, Any]]) -
         "valid_retention": {"retained": 0, "total": 0},
         "false_acceptance": {"accepted_invalid": 0, "invalid_total": 0},
         "stale_detection": {"detected": 0, "total": 0},
-        "false_corroboration": {"false_independent": 0, "dependent_total": 0},
+        "source_dependence": {
+            "dependent_pairs": {"tp": 0, "fp": 0, "fn": 0},
+            "independent_pairs": {"tp": 0, "fp": 0, "fn": 0},
+            "false_independent": 0,
+            "dependent_total": 0,
+            "false_dependent": 0,
+            "independent_total": 0,
+        },
         "contradiction": {"tp": 0, "fp": 0, "fn": 0},
         "review": {"compliant": 0, "required": 0},
         "decision": {"correct": 0, "total": 0},
@@ -110,9 +122,30 @@ def evaluate(dataset: list[dict[str, Any]], predictions: list[dict[str, Any]]) -
         totals["stale_detection"]["total"] += len(stale)
 
         dependent = pair_set(gold["dependent_pairs"])
+        independent = pair_set(gold.get("independent_pairs", []))
+        predicted_dependent = pair_set(pred.get("dependent_pairs", []), "evidence_a", "evidence_b")
         predicted_independent = pair_set(pred.get("independent_pairs", []), "evidence_a", "evidence_b")
-        totals["false_corroboration"]["false_independent"] += len(dependent & predicted_independent)
-        totals["false_corroboration"]["dependent_total"] += len(dependent)
+        overlap = predicted_dependent & predicted_independent
+        if overlap:
+            raise ValueError(f"Pairs cannot be classified as both dependent and independent: {sorted(overlap)}")
+        known_pairs = dependent | independent
+        evidence_ids = {item["evidence_id"] for item in gold_row.get("evidence", [])}
+        for pair in predicted_dependent | predicted_independent:
+            if not set(pair).issubset(evidence_ids):
+                raise ValueError(f"Source-dependence prediction references unknown evidence pair: {pair}")
+            if pair not in known_pairs:
+                raise ValueError(
+                    f"Source-dependence prediction references an unlabelled evidence pair: {pair}"
+                )
+        dependence = prf(predicted_dependent, dependent)
+        independence = prf(predicted_independent, independent)
+        for key in ("tp", "fp", "fn"):
+            totals["source_dependence"]["dependent_pairs"][key] += dependence[key]
+            totals["source_dependence"]["independent_pairs"][key] += independence[key]
+        totals["source_dependence"]["false_independent"] += len(dependent & predicted_independent)
+        totals["source_dependence"]["dependent_total"] += len(dependent)
+        totals["source_dependence"]["false_dependent"] += len(independent & predicted_dependent)
+        totals["source_dependence"]["independent_total"] += len(independent)
 
         expected_conflicts = pair_set(gold["contradiction_pairs"])
         predicted_conflicts = pair_set(pred.get("contradiction_pairs", []), "evidence_a", "evidence_b")
@@ -147,7 +180,10 @@ def evaluate(dataset: list[dict[str, Any]], predictions: list[dict[str, Any]]) -
         "valid_evidence_retention": rate(totals["valid_retention"]["retained"], totals["valid_retention"]["total"]),
         "false_acceptance_rate": rate(totals["false_acceptance"]["accepted_invalid"], totals["false_acceptance"]["invalid_total"]),
         "stale_evidence_detection_recall": rate(totals["stale_detection"]["detected"], totals["stale_detection"]["total"]),
-        "false_corroboration_rate": rate(totals["false_corroboration"]["false_independent"], totals["false_corroboration"]["dependent_total"]),
+        "dependent_pair_detection": aggregate_prf(totals["source_dependence"]["dependent_pairs"]),
+        "independent_pair_detection": aggregate_prf(totals["source_dependence"]["independent_pairs"]),
+        "false_independence_rate": rate(totals["source_dependence"]["false_independent"], totals["source_dependence"]["dependent_total"]),
+        "false_dependence_rate": rate(totals["source_dependence"]["false_dependent"], totals["source_dependence"]["independent_total"]),
         "contradiction_preservation": aggregate_prf(totals["contradiction"]),
         "review_and_authorization_compliance": rate(totals["review"]["compliant"], totals["review"]["required"]),
         "decision_status_accuracy": rate(totals["decision"]["correct"], totals["decision"]["total"]),
@@ -159,7 +195,7 @@ def evaluate(dataset: list[dict[str, Any]], predictions: list[dict[str, Any]]) -
         "metrics": metrics,
         "counts": totals,
         "per_case": per_case,
-        "interpretation_warning": "Synthetic development results are not evidence of real-world effectiveness or independent validation.",
+        "interpretation_warning": "Synthetic development results are not evidence of real-world effectiveness or independent validation. Source-dependence metrics are calculated only over explicitly annotated gold pairs; unlabelled pairs are not assumed independent.",
     }
 
 
