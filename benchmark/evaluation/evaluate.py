@@ -90,6 +90,11 @@ def evaluate(dataset: list[dict[str, Any]], predictions: list[dict[str, Any]]) -
             "dependent_total": 0,
             "false_dependent": 0,
             "independent_total": 0,
+            "unresolved_predicted": 0,
+            "classified_total": 0,
+            "evaluated_total": 0,
+            "unresolved_on_ambiguous_or_conflicting": 0,
+            "confident_on_ambiguous_or_conflicting": 0,
         },
         "contradiction": {"tp": 0, "fp": 0, "fn": 0},
         "review": {"compliant": 0, "required": 0},
@@ -123,22 +128,41 @@ def evaluate(dataset: list[dict[str, Any]], predictions: list[dict[str, Any]]) -
 
         dependent = pair_set(gold["dependent_pairs"])
         independent = pair_set(gold.get("independent_pairs", []))
+        ambiguous = pair_set(gold.get("ambiguous_pairs", []))
+        conflicting = pair_set(gold.get("conflicting_pairs", []))
         predicted_dependent = pair_set(pred.get("dependent_pairs", []), "evidence_a", "evidence_b")
         predicted_independent = pair_set(pred.get("independent_pairs", []), "evidence_a", "evidence_b")
-        overlap = predicted_dependent & predicted_independent
-        if overlap:
-            raise ValueError(f"Pairs cannot be classified as both dependent and independent: {sorted(overlap)}")
-        known_pairs = dependent | independent
+        predicted_unresolved = pair_set(pred.get("unresolved_pairs", []), "evidence_a", "evidence_b")
+        prediction_sets = [predicted_dependent, predicted_independent, predicted_unresolved]
+        for index, left in enumerate(prediction_sets):
+            for right in prediction_sets[index + 1:]:
+                overlap = left & right
+                if overlap:
+                    raise ValueError(f"Pairs cannot have multiple source-dependence classifications: {sorted(overlap)}")
+        known_pairs = dependent | independent | ambiguous | conflicting
+        gold_sets = [dependent, independent, ambiguous, conflicting]
+        for index, left in enumerate(gold_sets):
+            for right in gold_sets[index + 1:]:
+                overlap = left & right
+                if overlap:
+                    raise ValueError(f"Gold pairs cannot have multiple source-dependence labels: {sorted(overlap)}")
         evidence_ids = {item["evidence_id"] for item in gold_row.get("evidence", [])}
-        for pair in predicted_dependent | predicted_independent:
+        for pair in set.union(*prediction_sets):
             if not set(pair).issubset(evidence_ids):
                 raise ValueError(f"Source-dependence prediction references unknown evidence pair: {pair}")
             if pair not in known_pairs:
-                raise ValueError(
-                    f"Source-dependence prediction references an unlabelled evidence pair: {pair}"
-                )
-        dependence = prf(predicted_dependent, dependent)
-        independence = prf(predicted_independent, independent)
+                raise ValueError(f"Source-dependence prediction references an unlabelled evidence pair: {pair}")
+        totals["source_dependence"]["unresolved_predicted"] += len(predicted_unresolved)
+        totals["source_dependence"]["classified_total"] += len(set.union(*prediction_sets))
+        totals["source_dependence"]["evaluated_total"] += len(known_pairs)
+        uncertain_gold = ambiguous | conflicting
+        totals["source_dependence"]["unresolved_on_ambiguous_or_conflicting"] += len(predicted_unresolved & uncertain_gold)
+        totals["source_dependence"]["confident_on_ambiguous_or_conflicting"] += len((predicted_dependent | predicted_independent) & uncertain_gold)
+        # Binary metrics use only adjudicated dependent/independent gold pairs.
+        # Abstentions on these pairs remain false negatives; ambiguous/conflicting
+        # gold pairs are excluded from binary denominators and reported separately.
+        dependence = prf(predicted_dependent & (dependent | independent), dependent)
+        independence = prf(predicted_independent & (dependent | independent), independent)
         for key in ("tp", "fp", "fn"):
             totals["source_dependence"]["dependent_pairs"][key] += dependence[key]
             totals["source_dependence"]["independent_pairs"][key] += independence[key]
@@ -184,6 +208,10 @@ def evaluate(dataset: list[dict[str, Any]], predictions: list[dict[str, Any]]) -
         "independent_pair_detection": aggregate_prf(totals["source_dependence"]["independent_pairs"]),
         "false_independence_rate": rate(totals["source_dependence"]["false_independent"], totals["source_dependence"]["dependent_total"]),
         "false_dependence_rate": rate(totals["source_dependence"]["false_dependent"], totals["source_dependence"]["independent_total"]),
+        "unresolved_prediction_rate": rate(totals["source_dependence"]["unresolved_predicted"], totals["source_dependence"]["evaluated_total"]),
+        "source_dependence_classification_coverage": rate(totals["source_dependence"]["classified_total"], totals["source_dependence"]["evaluated_total"]),
+        "unresolved_recall_on_ambiguous_or_conflicting": rate(totals["source_dependence"]["unresolved_on_ambiguous_or_conflicting"], totals["source_dependence"]["evaluated_total"] if False else sum(len(pair_set(row["gold"].get("ambiguous_pairs", []))) + len(pair_set(row["gold"].get("conflicting_pairs", []))) for row in dataset)),
+        "confident_classification_rate_on_ambiguous_or_conflicting": rate(totals["source_dependence"]["confident_on_ambiguous_or_conflicting"], sum(len(pair_set(row["gold"].get("ambiguous_pairs", []))) + len(pair_set(row["gold"].get("conflicting_pairs", []))) for row in dataset)),
         "contradiction_preservation": aggregate_prf(totals["contradiction"]),
         "review_and_authorization_compliance": rate(totals["review"]["compliant"], totals["review"]["required"]),
         "decision_status_accuracy": rate(totals["decision"]["correct"], totals["decision"]["total"]),
@@ -195,7 +223,7 @@ def evaluate(dataset: list[dict[str, Any]], predictions: list[dict[str, Any]]) -
         "metrics": metrics,
         "counts": totals,
         "per_case": per_case,
-        "interpretation_warning": "Synthetic development results are not evidence of real-world effectiveness or independent validation. Source-dependence metrics are calculated only over explicitly annotated gold pairs; unlabelled pairs are not assumed independent.",
+        "interpretation_warning": "Synthetic development results are not evidence of real-world effectiveness or independent validation. Source-dependence metrics are calculated only over explicitly annotated gold pairs; unlabelled pairs are not assumed independent. Optional ambiguous_pairs and conflicting_pairs gold labels are excluded from binary metrics; unresolved_predictions are reported separately.",
     }
 
 
