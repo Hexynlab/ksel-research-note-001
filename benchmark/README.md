@@ -57,6 +57,8 @@ A system may abstain by leaving links or acceptance lists empty. Abstention is n
 
 ## Metric definitions
 
+The current evaluator operationalises only the measures listed below. RN-008 proposes additional outcomes—such as calibration, unsupported-certainty rate, audit reconstruction, unauthorized state transitions, human review effort, latency and operating cost—that are not measured by this evaluator. Those require separate instrumentation, schema support and/or human annotation; they are future research outcomes, not current benchmark results.
+
 - Traceability: micro precision, recall and F1 over required claim-evidence links.
 - Invalid-evidence detection: precision, recall and F1 for the gold invalid evidence IDs.
 - Valid-evidence retention: proportion of gold valid evidence retained by the system.
@@ -85,7 +87,7 @@ Before confirmatory experiments, H3XYN LAB should:
 - expand the dataset using documented generation and sampling procedures;
 - establish baseline and KSEL treatment implementations with equivalent resource budgets;
 - define primary outcomes and practical thresholds in advance;
-- commission independent annotation review;
+- commission independent annotation review using the procedure in the baseline and treatment protocol;
 - publish a frozen protocol and analysis plan;
 - maintain a separate held-out evaluation set with controlled access or a delayed public release.
 
