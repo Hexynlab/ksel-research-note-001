@@ -25,9 +25,16 @@ Develops decision-centred evidence acquisition, candidate evidence-action record
 
 [Read Research Note 002](research/KSEL-RESEARCH-NOTE-002.md)
 
+### KSEL Research Note 003
+**Evidence Integrity, Provenance Verification, and Adversarial Resilience**
+
+Develops a layered integrity model separating content integrity, source authenticity, provenance continuity, contextual validity, source independence, and substantive reliability. Introduces lineage and custody records, verification levels, cryptographic controls and their limits, prompt-injection isolation, and incident reassessment.
+
+[Read Research Note 003](research/KSEL-RESEARCH-NOTE-003.md)
+
 ## Research position
 
-Both publications are preliminary research frameworks. Their hypotheses and evaluation measures are proposed for future testing; they are not presented as validated findings, certified standards, or proof of system performance.
+These publications are preliminary research frameworks. Their hypotheses and evaluation measures are proposed for future testing; they are not presented as validated findings, certified standards, or proof of system performance.
 
 The series distinguishes source evidence, claims, inference, and recommendations. It treats mandatory safety, privacy, security, and review requirements as constraints rather than costs that can simply be traded away.
 
@@ -38,7 +45,8 @@ The series distinguishes source evidence, claims, inference, and recommendations
 ├── README.md
 └── research/
     ├── KSEL-RESEARCH-NOTE-001.md
-    └── KSEL-RESEARCH-NOTE-002.md
+    ├── KSEL-RESEARCH-NOTE-002.md
+    └── KSEL-RESEARCH-NOTE-003.md
 ```
 
 ## Research integrity
@@ -47,4 +55,4 @@ H3XYN LAB aims to make research claims proportionate to available evidence. Futu
 
 ## Citation
 
-H3XYN LAB. (2026). *KSEL Research Notes 001–002*. H3XYN LAB Technical Research Notes. Repository: https://github.com/nofuxgvnwiring-source/ksel-research-note-001
+H3XYN LAB. (2026). *KSEL Research Notes 001–003*. H3XYN LAB Technical Research Notes. Repository: https://github.com/nofuxgvnwiring-source/ksel-research-note-001
