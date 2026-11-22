@@ -123,23 +123,17 @@ A defined combination of KSEL mechanisms will improve a preregistered composite 
 
 ## 4. Experimental conditions
 
-The programme should compare at least the following conditions. Exact implementations must be documented before testing.
+The normative comparison conditions for RN-008 are defined in [the Baseline and Treatment Protocol](../benchmark/BASELINE-AND-TREATMENT-PROTOCOL.md). That document is the controlling specification for condition names and fairness controls.
 
-| Condition | Description |
-|---|---|
-| B0 — Minimal baseline | System records inputs and outputs with minimal structured evidence governance |
-| B1 — Provenance baseline | Source identifiers and basic provenance are recorded |
-| K1 — Traceability treatment | Explicit evidence-to-claim relationships are added |
-| K2 — Integrity treatment | Provenance, integrity and contextual verification controls are added |
-| K3 — Dependence treatment | Source lineage and dependence analysis are added |
-| K4 — Temporal treatment | Valid time, record time, freshness and supersession controls are added |
-| K5 — Uncertainty treatment | Multidimensional uncertainty and contradiction records are added |
-| K6 — Review treatment | Review states, authorization gates and audit events are added |
-| K7 — Integrated treatment | A specified combination of selected KSEL mechanisms is evaluated |
+In summary:
 
-The minimal baseline must not be intentionally weakened. It should represent a reasonable, documented alternative appropriate to the task. Where a strong existing method is available, include it as an additional comparator.
+- **B0 — Task-native baseline:** a capable system performs the task using its ordinary workflow, with outputs mapped to the common prediction contract by a documented, non-reasoning adapter.
+- **B1 — Basic source-metadata baseline:** the same task is performed with ordinary source identifiers and available metadata, but without the selected KSEL governance workflow.
+- **K1 — KSEL governance treatment:** a versioned implementation of the selected KSEL mechanisms, with the exact active controls and human-authorized actions documented.
 
----
+K1 is an experiment-specific treatment, not a claim that one complete immutable KSEL implementation already exists. Where feasible, use ablations to isolate selected mechanisms. Do not mix the older K1–K7 shorthand in this note with separate condition definitions; identify individual components and ablations within the registered study.
+
+No B0, B1 or K1 implementation is claimed to exist or to have been run as part of this protocol.
 
 ## 5. Scenario and test-set design
 
@@ -176,39 +170,67 @@ Dataset construction should define:
 
 No sample size is prescribed here. It must be justified by the research question, expected effect size, variability and available resources before confirmatory evaluation.
 
-### 5.2 Annotation quality
+### 5.2 Annotation quality and independent adjudication
 
-Where human labels are used, document annotator qualifications, instructions, disagreement, adjudication and inter-annotator agreement where appropriate. Preserve uncertainty when expert disagreement cannot be resolved.
+For any confirmatory dataset using human gold labels:
+
+1. Use at least two annotators who label each relevant item independently before discussion.
+2. Record each annotator's relevant domain experience, training and any conflicts of interest. Do not imply that a title alone establishes expertise.
+3. Publish the annotation handbook, operational definitions, examples, allowed labels and decision rules before annotation.
+4. Keep annotators blind to system condition and model outputs where feasible.
+5. Preserve the original independent labels. Do not overwrite disagreement with a single undocumented consensus label.
+6. Report raw agreement and an appropriate chance-corrected agreement statistic when its assumptions fit the label structure; explain exclusions and missing labels.
+7. Send disagreements to a separately identified adjudicator or panel. Record the adjudication rationale and final label.
+8. Retain an explicit ambiguous/uncertain/unresolved outcome. Do not force a binary source-dependence label when available evidence cannot justify one.
+9. Distinguish author-created development annotations from independently reviewed or adjudicated confirmatory labels.
+
+The current 15-case public synthetic fixture is hand-authored and has not undergone this independent annotation procedure. Its labels are development annotations, not externally established ground truth.
 
 ---
 
 ## 6. Metrics and operational definitions
 
-All metric definitions and calculation rules must be frozen before confirmatory testing.
+Metrics must be classified by whether the current public evaluator can actually calculate them. Definitions and calculation rules for any confirmatory study must be frozen before testing.
 
-| Metric | Proposed definition |
+### 6.1 Operationalised by the current public evaluator
+
+The evaluator currently calculates:
+
+- traceability-link micro precision, recall and F1;
+- invalid-evidence detection precision, recall and F1;
+- valid-evidence retention;
+- false-acceptance rate;
+- stale-evidence detection recall;
+- dependent-pair and independent-pair precision, recall and F1 over explicitly annotated pairs;
+- false-independence and false-dependence rates over explicitly annotated gold pairs;
+- contradiction-preservation precision, recall and F1;
+- exact-match decision-status accuracy against case-specific expected labels;
+- review and authorization compliance.
+
+These measures are calculated against the hand-authored annotations in the public 15-case development fixture. They do not establish factual truth, general reasoning ability or real-world effectiveness.
+
+### 6.2 Proposed but not operationalised by the current evaluator
+
+The following remain research outcomes requiring additional instrumentation, data structures, measurement protocols and/or independent human assessment:
+
+| Proposed outcome | Additional requirement |
 |---|---|
-| Traceability completeness | Proportion of required claim-evidence links correctly recorded |
-| Traceability precision | Proportion of recorded links judged valid under the annotation rubric |
-| Provenance detection sensitivity | Proportion of labelled provenance failures correctly identified |
-| Provenance false-positive rate | Proportion of valid evidence incorrectly rejected as having a provenance failure |
-| False-corroboration rate | Proportion of dependent evidence groups incorrectly treated as independent corroboration |
-| Stale-evidence detection | Proportion of labelled stale or inapplicable evidence correctly identified |
-| Valid-evidence retention | Proportion of valid and relevant evidence retained for reasoning |
-| Unsupported certainty rate | Frequency of certainty claims exceeding the support defined by the evaluation rubric |
-| Calibration | Agreement between stated probabilities and observed outcomes, where probabilistic forecasts are meaningful |
-| Contradiction preservation | Proportion of material contradictions retained and represented accurately |
-| Review completeness | Proportion of required review and authorization events correctly recorded |
-| Unauthorized transition rate | Proportion of protected state changes occurring without required authorization |
-| Decision reconstruction accuracy | Accuracy with which evaluators reconstruct the evidence, assumptions and review path behind a decision |
-| Review burden | Human time or effort required per case |
-| Latency | Elapsed processing time under defined measurement conditions |
-| Resource cost | Compute, storage or monetary cost under documented assumptions |
-| Regression rate | Degradation on predefined tasks after a change or update |
+| Provenance detection sensitivity/specificity beyond current invalid-evidence labels | Explicit provenance-failure taxonomy and adjudicated labels |
+| Unsupported-certainty rate | Operational rubric for certainty claims and support sufficiency |
+| Probabilistic calibration | Probability-bearing predictions, defined outcomes and calibration analysis |
+| Audit reconstruction accuracy | Ordered event histories and a reconstruction rubric |
+| Unauthorized state-transition rate | State-transition logs and authorization-event records |
+| Human review burden | Time/effort instrumentation and a defined unit of work |
+| Latency | Repeated timing under controlled execution conditions |
+| Compute and monetary cost | Resource instrumentation and transparent cost assumptions |
+| Regression rate | Versioned repeated-task comparisons and a predefined regression rule |
+| Quality-cost frontier | Comparable quality and cost observations across registered conditions |
 
-Metrics should be reported individually. Any composite score must publish its components, weighting, missing-data treatment and sensitivity to alternative weights.
+Do not report these proposed outcomes as if the current evaluator measures them. A study may add them only through a versioned schema, protocol and analysis plan.
 
----
+### 6.3 Reporting discipline
+
+Report operationalised metrics separately. Do not introduce an unregistered composite or imply that a single metric establishes overall superiority. Undefined denominators, missing observations and ambiguous labels must be handled according to the frozen analysis plan.
 
 ## 7. Experimental procedure
 
