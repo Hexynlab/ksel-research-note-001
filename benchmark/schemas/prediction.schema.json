@@ -104,12 +104,15 @@
       ],
       "properties": {
         "evidence_a": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "evidence_b": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         }
-      }
+      },
+      "description": "An unordered pair of distinct evidence identifiers. Self-pairs, duplicate/reversed pairs, and cross-array overlap are rejected by evaluator semantic validation."
     }
   }
 }
