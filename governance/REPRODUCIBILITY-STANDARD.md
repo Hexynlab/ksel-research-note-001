@@ -1,4 +1,4 @@
-# H3XYN LAB — Reproducibility and Experimental Reporting Standard
+# HEXYN LAB — Reproducibility and Experimental Reporting Standard
 
 **Applies to:** Empirical KSEL publications, prototypes and benchmark reports  
 **Status:** Public standard, version 1.0  

@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "If you use or discuss this research, please cite the KSEL research-note series and identify the specific note and version."
 title: "KSEL Research Notes: Evidence Governance for Intelligent Systems"
 authors:
-  - name: "H3XYN LAB"
+  - name: "HEXYN LAB"
     affiliation: "Independent research laboratory"
 type: software
 repository-code: "https://github.com/Hexynlab/ksel-research-note-001"

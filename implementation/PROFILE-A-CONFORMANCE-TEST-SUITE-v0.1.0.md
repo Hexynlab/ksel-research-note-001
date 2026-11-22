@@ -3,7 +3,7 @@
 **Version:** 0.1.0  
 **Status:** Experimental test specification; not a standard or certification  
 **Target:** KSEL Profile A reference API v0.1.0  
-**Institution:** H3XYN LAB
+**Institution:** HEXYN LAB
 
 ## Purpose
 

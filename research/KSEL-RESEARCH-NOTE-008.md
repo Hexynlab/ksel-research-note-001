@@ -4,7 +4,7 @@
 
 **Subtitle:** Benchmark Design, Experimental Methods, and Comparative Performance Assessment  
 **Series:** KSEL — Knowledge, Source, Evidence Layer  
-**Institution:** H3XYN LAB  
+**Institution:** HEXYN LAB  
 **Publication type:** Preliminary experimental protocol  
 **Version:** 0.1.0  
 **Date:** 22 November 2026  
@@ -395,7 +395,7 @@ These works inform benchmark construction, documentation, reproducibility, and a
 
 ## Publication and research integrity statement
 
-This document is a preliminary experimental protocol developed for the KSEL research-note series of H3XYN LAB. Its hypotheses, scenario families, metrics, comparison conditions and procedures are proposals for investigation.
+This document is a preliminary experimental protocol developed for the KSEL research-note series of HEXYN LAB. Its hypotheses, scenario families, metrics, comparison conditions and procedures are proposals for investigation.
 
 No experiment, benchmark result, statistical finding, independent review, production deployment or validation is claimed. Any future report must identify the exact protocol version used, disclose deviations and distinguish exploratory analysis from confirmatory findings.
 
@@ -403,4 +403,4 @@ No experiment, benchmark result, statistical finding, independent review, produc
 
 **Suggested citation**
 
-H3XYN LAB. (2026). *KSEL Research Note 008: Empirical Evaluation of Evidence Governance in Intelligent Systems* (Version 0.1.0). H3XYN LAB Technical Research Notes. https://github.com/Hexynlab/ksel-research-note-001
+HEXYN LAB. (2026). *KSEL Research Note 008: Empirical Evaluation of Evidence Governance in Intelligent Systems* (Version 0.1.0). HEXYN LAB Technical Research Notes. https://github.com/Hexynlab/ksel-research-note-001

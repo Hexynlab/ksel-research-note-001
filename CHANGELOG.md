@@ -8,7 +8,7 @@ This changelog records material changes to the public KSEL repository release se
 - Replaced legacy repository URLs in the research-note citation metadata with the canonical Hexynlab repository URL.
 - Added selected related-work references and consistent suggested citations to RN-001 through RN-008.
 - Replaced broad extension-based licence descriptions with an explicit path-level licence map.
-- Clarified that NOTICE identifies H3XYN LAB as the publishing source and does not claim third-party material.
+- Clarified that NOTICE identifies HEXYN LAB as the publishing source and does not claim third-party material.
 - Pinned GitHub Actions dependencies to full commit SHAs.
 - Integrated full-history Gitleaks scanning into the required `schema-tests` job so a failed PR secret scan blocks the existing required status check.
 - Kept the scheduled/manual secret scan for periodic repository-history checks.

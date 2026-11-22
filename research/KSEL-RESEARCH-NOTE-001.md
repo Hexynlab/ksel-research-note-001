@@ -1,12 +1,12 @@
 # KSEL Research Note 001
 ## Evidence Governance, Uncertainty Management, and Review Controls for Intelligent Systems
 
-**Publication series:** H3XYN LAB — Technical Research Notes  
+**Publication series:** HEXYN LAB — Technical Research Notes  
 **Document identifier:** KSEL-RN-001  
 **Version:** 0.1.0  
 **Status:** Research framework / preliminary publication  
 **Date:** 22 November 2026  
-**Maintained by:** H3XYN LAB  
+**Maintained by:** HEXYN LAB  
 **Research area:** Intelligent systems architecture, evidence governance, uncertainty management
 
 ---
@@ -447,4 +447,4 @@ This document describes a proposed research framework. It does not report comple
 
 **Suggested citation**
 
-H3XYN LAB. (2026). *KSEL Research Note 001: Evidence Governance, Uncertainty Management, and Review Controls for Intelligent Systems* (Version 0.1.0). H3XYN LAB Technical Research Notes. https://github.com/Hexynlab/ksel-research-note-001
+HEXYN LAB. (2026). *KSEL Research Note 001: Evidence Governance, Uncertainty Management, and Review Controls for Intelligent Systems* (Version 0.1.0). HEXYN LAB Technical Research Notes. https://github.com/Hexynlab/ksel-research-note-001

@@ -1,4 +1,4 @@
-# Contributing to H3XYN LAB KSEL Research
+# Contributing to HEXYN LAB KSEL Research
 
 Thank you for your interest in examining or contributing to the KSEL research programme.
 
@@ -43,10 +43,10 @@ Changes intended for a release must follow the [KSEL Release Governance Policy](
 
 ## Licensing contributions
 
-The repository uses Apache 2.0 for specified software files and CC BY 4.0 for specified research documentation and examples, as described in [LICENSING.md](LICENSING.md). By submitting material for inclusion, you confirm that you have the necessary rights and agree that accepted material may be distributed under the applicable repository licence. You retain ownership of your contribution. If your contribution contains third-party material or requires different terms, disclose this clearly and obtain approval before submission. Do not assume that submitting a pull request transfers copyright ownership to H3XYN LAB.
+The repository uses Apache 2.0 for specified software files and CC BY 4.0 for specified research documentation and examples, as described in [LICENSING.md](LICENSING.md). By submitting material for inclusion, you confirm that you have the necessary rights and agree that accepted material may be distributed under the applicable repository licence. You retain ownership of your contribution. If your contribution contains third-party material or requires different terms, disclose this clearly and obtain approval before submission. Do not assume that submitting a pull request transfers copyright ownership to HEXYN LAB.
 
 For AI-assisted contributions, the submitter must review the output, check the applicable tool terms, and ensure that the contribution does not knowingly include third-party material or restrictions incompatible with the proposed licence. This guide does not determine copyright ownership or replace legal advice.
 
 ## Scope
 
-This repository is for KSEL research. Other H3XYN LAB programmes should use their own repositories and governance unless a contribution directly concerns KSEL.
+This repository is for KSEL research. Other HEXYN LAB programmes should use their own repositories and governance unless a contribution directly concerns KSEL.

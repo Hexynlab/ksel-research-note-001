@@ -3,7 +3,7 @@
 ## Temporal Intelligence, Evidence Evolution, and Continuous Knowledge Validation
 
 **Series:** KSEL — Knowledge, Source, Evidence Layer  
-**Institution:** H3XYN LAB  
+**Institution:** HEXYN LAB  
 **Publication type:** Preliminary research framework  
 **Version:** 0.1.0  
 **Date:** 22 November 2026  
@@ -615,7 +615,7 @@ These sources provide foundations for temporal data semantics, provenance, and c
 
 ## Publication and research integrity statement
 
-This document presents a preliminary research framework developed for the KSEL research-note series of H3XYN LAB. Its architecture, schema, lifecycle states, hypotheses, metrics, and implementation stages are proposals for investigation.
+This document presents a preliminary research framework developed for the KSEL research-note series of HEXYN LAB. Its architecture, schema, lifecycle states, hypotheses, metrics, and implementation stages are proposals for investigation.
 
 No empirical validation, benchmark result, production deployment, certification, or demonstrated performance is claimed by this publication. The illustrative records are hypothetical. The hypotheses require independent testing, documented methods, suitable baselines, and reproducible evidence.
 
@@ -625,4 +625,4 @@ Future revisions should identify material changes, preserve version history, doc
 
 **Suggested citation**
 
-H3XYN LAB. (2026). *KSEL Research Note 006: Temporal Intelligence, Evidence Evolution, and Continuous Knowledge Validation* (Version 0.1.0). H3XYN LAB Technical Research Notes. https://github.com/Hexynlab/ksel-research-note-001
+HEXYN LAB. (2026). *KSEL Research Note 006: Temporal Intelligence, Evidence Evolution, and Continuous Knowledge Validation* (Version 0.1.0). HEXYN LAB Technical Research Notes. https://github.com/Hexynlab/ksel-research-note-001

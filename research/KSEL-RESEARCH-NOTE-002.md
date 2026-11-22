@@ -1,12 +1,12 @@
 # KSEL Research Note 002
 ## Cost-Aware Evidence Selection and Adaptive Review Governance
 
-**Publication series:** H3XYN LAB — Technical Research Notes  
+**Publication series:** HEXYN LAB — Technical Research Notes  
 **Document identifier:** KSEL-RN-002  
 **Version:** 0.1.0  
 **Status:** Preliminary research framework  
 **Date:** 22 November 2026  
-**Maintained by:** H3XYN LAB  
+**Maintained by:** HEXYN LAB  
 **Research area:** Evidence selection, decision theory, uncertainty management, review governance
 
 ---
@@ -461,4 +461,4 @@ This document presents a proposed research framework. It does not report complet
 
 **Suggested citation**
 
-H3XYN LAB. (2026). *KSEL Research Note 002: Cost-Aware Evidence Selection and Adaptive Review Governance* (Version 0.1.0). H3XYN LAB Technical Research Notes. https://github.com/Hexynlab/ksel-research-note-001
+HEXYN LAB. (2026). *KSEL Research Note 002: Cost-Aware Evidence Selection and Adaptive Review Governance* (Version 0.1.0). HEXYN LAB Technical Research Notes. https://github.com/Hexynlab/ksel-research-note-001

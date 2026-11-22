@@ -1,7 +1,7 @@
 # KSEL RN-008 — Benchmark Specification v0.2.0
 
 **Status:** Development specification; not a validated benchmark  
-**Owner:** H3XYN LAB  
+**Owner:** HEXYN LAB  
 **Related publication:** KSEL Research Note 008  
 **Date:** 22 November 2026
 

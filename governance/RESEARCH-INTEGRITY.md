@@ -1,4 +1,4 @@
-# H3XYN LAB — Research Integrity Policy
+# HEXYN LAB — Research Integrity Policy
 
 **Applies to:** KSEL research publications and associated public research artefacts  
 **Status:** Public policy, version 1.0  
@@ -6,7 +6,7 @@
 
 ## 1. Purpose
 
-H3XYN LAB aims to publish work that can be inspected, challenged, corrected and, where feasible, reproduced. This policy defines minimum standards for research claims and publication conduct.
+HEXYN LAB aims to publish work that can be inspected, challenged, corrected and, where feasible, reproduced. This policy defines minimum standards for research claims and publication conduct.
 
 ## 2. Claim discipline
 
@@ -47,7 +47,7 @@ Do not invent sample sizes, measurements, citations, benchmark scores, peer revi
 
 ## 5. Sources and attribution
 
-Use traceable references for material claims. Attribute ideas, quotations, datasets, software and methods to their creators. Follow applicable licences and permissions. Do not present another party's work as original H3XYN LAB research.
+Use traceable references for material claims. Attribute ideas, quotations, datasets, software and methods to their creators. Follow applicable licences and permissions. Do not present another party's work as original HEXYN LAB research.
 
 ## 6. Corrections and concerns
 
@@ -69,4 +69,4 @@ Research must respect privacy, safety, applicable law, human-subject protections
 
 ## 10. Policy status
 
-This policy establishes H3XYN LAB's intended publication standard. It does not claim external accreditation, formal ethics-board approval, or certification. It may be revised as the research programme develops.
+This policy establishes HEXYN LAB's intended publication standard. It does not claim external accreditation, formal ethics-board approval, or certification. It may be revised as the research programme develops.
