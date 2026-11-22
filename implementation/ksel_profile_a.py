@@ -91,6 +91,31 @@ def validate_records(records: Iterable[Mapping[str, Any]],
                 f"{found.get('record_type')} ({target})"
             )
 
+    # Source derivation must be acyclic: cycles make provenance ancestry ambiguous.
+    source_graph = {
+        rid: [ref for ref in record.get("derived_from", [])
+              if isinstance(ref, str) and ref in indexed
+              and indexed[ref].get("record_type") == "source"]
+        for rid, record in indexed.items() if record.get("record_type") == "source"
+    }
+    visiting: set[str] = set()
+    visited: set[str] = set()
+
+    def visit_source(source_id: str) -> None:
+        if source_id in visiting:
+            errors.append(f"source lineage cycle detected at {source_id}")
+            return
+        if source_id in visited:
+            return
+        visiting.add(source_id)
+        for parent_id in source_graph.get(source_id, []):
+            visit_source(parent_id)
+        visiting.remove(source_id)
+        visited.add(source_id)
+
+    for source_id in source_graph:
+        visit_source(source_id)
+
     for rid, record in indexed.items():
         kind = record.get("record_type")
         if kind == "source":
@@ -101,6 +126,9 @@ def validate_records(records: Iterable[Mapping[str, Any]],
             for ref in record.get("lineage_source_ids", []):
                 require_ref(rid, "lineage_source_ids", ref, "source")
         elif kind == "claim":
+            evidence_ids = [link.get("evidence_id") for link in record.get("evidence_links", [])]
+            if len(evidence_ids) != len(set(evidence_ids)):
+                errors.append(f"{rid}.evidence_links contains duplicate evidence references")
             for link in record.get("evidence_links", []):
                 require_ref(rid, "evidence_links", link.get("evidence_id"), "evidence")
             for ref in record.get("uncertainty_ids", []):
@@ -188,8 +216,11 @@ class HashChainAuditLedger:
     def append(self, event: Mapping[str, Any]) -> dict:
         if not isinstance(event, Mapping):
             raise TypeError("event must be a mapping")
-        if self._entries and event.get("id") == self._entries[-1]["event"].get("id"):
-            raise ValueError("duplicate consecutive audit event id")
+        event_id = event.get("id")
+        if not isinstance(event_id, str) or not event_id.strip():
+            raise ValueError("audit event id must be a non-empty string")
+        if any(entry["event"].get("id") == event_id for entry in self._entries):
+            raise ValueError(f"duplicate audit event id: {event_id}")
         previous = self._entries[-1]["hash"] if self._entries else self.GENESIS
         payload = {"previous_hash": previous, "event": deepcopy(dict(event))}
         digest = hashlib.sha256(_canonical(payload)).hexdigest()
@@ -227,6 +258,10 @@ class HashChainAuditLedger:
             if target not in states or states[target] != prior:
                 raise KSELValidationError(
                     f"cannot replay transition for {target}: expected prior state {states.get(target)!r}, got {prior!r}"
+                )
+            if resulting not in ALLOWED_TRANSITIONS.get(prior, set()):
+                raise KSELValidationError(
+                    f"cannot replay disallowed transition for {target}: {prior!r} -> {resulting!r}"
                 )
             states[target] = resulting
         return states
