@@ -57,7 +57,7 @@ An evidence item may be valid yet insufficient to establish a claim. The labels 
 
 ## 5. Prediction contract
 
-A prediction contains the case ID, traceability links, accepted evidence IDs, flagged evidence IDs, independent source pairs, contradiction pairs, review completion and authorization validity. Exact field names and types are defined in the JSON Schema.
+A prediction contains the case ID, traceability links, accepted evidence IDs, flagged evidence IDs, independent source pairs, optional unresolved source pairs, contradiction pairs, review completion and authorization validity. Exact field names and types are defined in the JSON Schema.
 
 Unknown or missing case IDs are errors. Duplicate prediction rows are errors. The evaluator does not silently impute missing predictions.
 
@@ -70,13 +70,13 @@ The current deterministic evaluator operationalises the following measures:
 - valid-evidence retention;
 - false-acceptance rate;
 - stale-evidence detection recall;
-- dependent-pair and independent-pair precision, recall and F1 over explicitly annotated pairs;
+- dependent-pair and independent-pair precision, recall and F1 over explicitly annotated pairs;\n- explicit unresolved-prediction rate and source-dependence classification coverage across all explicitly labelled pairs;
 - false-independence and false-dependence rates over explicitly annotated gold pairs;
 - contradiction-preservation precision, recall and F1;
 - decision-status exact-match accuracy against the case-specific expected status;
 - review and authorization compliance.
 
-Unlabelled source pairs are not silently treated as independent or dependent; predictions for unlabelled pairs are rejected. Undefined denominators are reported as null. No weighted composite is defined.
+Unlabelled source pairs are not silently treated as independent or dependent; predictions for unlabelled pairs are rejected. Ambiguous and conflicting gold pairs are excluded from binary dependence metrics and reported separately. Explicit unresolved predictions are abstentions, not independence claims. Unresolved rate and classification coverage use all explicitly labelled gold pairs as the denominator; omitted labelled pairs reduce coverage but are not explicit unresolved predictions. PRF components with undefined denominators, including empty-empty categories, are null rather than perfect scores. No weighted composite is defined.
 
 The RN-008 research programme also proposes outcomes such as calibration, unsupported-certainty rate, audit reconstruction, unauthorized state transitions, human review effort, latency, compute and monetary cost. These are **not operationalised by the current public evaluator**. They require additional schemas, event records, measurement procedures and/or human annotation before they can be reported. They must not be presented as current benchmark metrics.
 
