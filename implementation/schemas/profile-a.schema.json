@@ -1,0 +1,745 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Hexynlab/ksel-research-note-001/blob/main/implementation/schemas/profile-a.schema.json",
+  "title": "KSEL Profile A Record Contracts",
+  "description": "Version 0.1.0 conceptual-to-executable JSON Schema bundle for core evidence governance records. Cross-record integrity and workflow rules require application-level validation.",
+  "type": "object",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/source"
+    },
+    {
+      "$ref": "#/$defs/evidence"
+    },
+    {
+      "$ref": "#/$defs/claim"
+    },
+    {
+      "$ref": "#/$defs/uncertainty"
+    },
+    {
+      "$ref": "#/$defs/review"
+    },
+    {
+      "$ref": "#/$defs/audit_event"
+    }
+  ],
+  "$defs": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "pattern": "^[A-Za-z][A-Za-z0-9._:-]*$"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "base": {
+      "type": "object",
+      "required": [
+        "record_type",
+        "id",
+        "schema_version",
+        "record_version",
+        "created_at"
+      ],
+      "properties": {
+        "record_type": {
+          "type": "string"
+        },
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "schema_version": {
+          "const": "0.1.0"
+        },
+        "record_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "created_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "updated_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "created_by": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        }
+      }
+    },
+    "source": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "record_type": {
+              "const": "source"
+            },
+            "source_type": {
+              "enum": [
+                "web_page",
+                "document",
+                "dataset",
+                "api",
+                "person_or_organisation",
+                "software_artifact",
+                "other"
+              ]
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1000
+            },
+            "origin_uri": {
+              "type": "string",
+              "format": "uri"
+            },
+            "publisher": {
+              "type": "string",
+              "maxLength": 500
+            },
+            "published_at": {
+              "$ref": "#/$defs/timestamp"
+            },
+            "accessed_at": {
+              "$ref": "#/$defs/timestamp"
+            },
+            "origin_status": {
+              "enum": [
+                "identified",
+                "partially_identified",
+                "unknown",
+                "disputed"
+              ]
+            },
+            "derived_from": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/id"
+              },
+              "uniqueItems": true
+            },
+            "description": {
+              "type": "string",
+              "maxLength": 5000
+            },
+            "access_class": {
+              "enum": [
+                "public",
+                "internal",
+                "restricted",
+                "confidential",
+                "unknown"
+              ]
+            }
+          },
+          "required": [
+            "record_type",
+            "source_type",
+            "title",
+            "origin_status",
+            "access_class"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "evidence": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "record_type": {
+              "const": "evidence"
+            },
+            "source_id": {
+              "$ref": "#/$defs/id"
+            },
+            "source_version": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "locator": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2000
+            },
+            "content_ref": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2000
+            },
+            "content_digest": {
+              "type": "object",
+              "required": [
+                "algorithm",
+                "value"
+              ],
+              "properties": {
+                "algorithm": {
+                  "enum": [
+                    "sha256",
+                    "sha384",
+                    "sha512"
+                  ]
+                },
+                "value": {
+                  "type": "string",
+                  "pattern": "^[A-Fa-f0-9]+$"
+                }
+              },
+              "additionalProperties": false
+            },
+            "acquired_at": {
+              "$ref": "#/$defs/timestamp"
+            },
+            "observed_at": {
+              "$ref": "#/$defs/timestamp"
+            },
+            "published_at": {
+              "$ref": "#/$defs/timestamp"
+            },
+            "transformation_ids": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/id"
+              },
+              "uniqueItems": true
+            },
+            "lineage_source_ids": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/id"
+              },
+              "uniqueItems": true
+            },
+            "integrity_status": {
+              "enum": [
+                "not_assessed",
+                "verified",
+                "failed",
+                "inconclusive",
+                "not_applicable"
+              ]
+            },
+            "relevance_status": {
+              "enum": [
+                "not_assessed",
+                "relevant",
+                "partially_relevant",
+                "irrelevant",
+                "disputed"
+              ]
+            },
+            "limitations": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "uniqueItems": true
+            }
+          },
+          "required": [
+            "record_type",
+            "source_id",
+            "locator",
+            "acquired_at",
+            "integrity_status",
+            "relevance_status"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "claim": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "record_type": {
+              "const": "claim"
+            },
+            "claim_type": {
+              "enum": [
+                "observation",
+                "factual_assertion",
+                "inference",
+                "prediction",
+                "recommendation"
+              ]
+            },
+            "proposition": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 10000
+            },
+            "scope": {
+              "type": "object",
+              "properties": {
+                "subject": {
+                  "type": "string"
+                },
+                "population": {
+                  "type": "string"
+                },
+                "valid_from": {
+                  "$ref": "#/$defs/timestamp"
+                },
+                "valid_until": {
+                  "$ref": "#/$defs/timestamp"
+                },
+                "context": {
+                  "type": "string"
+                },
+                "conditions": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "additionalProperties": false
+            },
+            "evidence_links": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "evidence_id",
+                  "relationship",
+                  "rationale"
+                ],
+                "properties": {
+                  "evidence_id": {
+                    "$ref": "#/$defs/id"
+                  },
+                  "relationship": {
+                    "enum": [
+                      "supports",
+                      "qualifies",
+                      "contradicts",
+                      "contextualises",
+                      "examined_not_relevant"
+                    ]
+                  },
+                  "rationale": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 5000
+                  },
+                  "locator": {
+                    "type": "string",
+                    "maxLength": 2000
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "uncertainty_ids": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/id"
+              },
+              "uniqueItems": true
+            },
+            "review_state": {
+              "enum": [
+                "draft",
+                "evidence_linked",
+                "review_required",
+                "qualified",
+                "approved",
+                "rejected",
+                "superseded"
+              ]
+            },
+            "supersedes_claim_version": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "limitations": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "record_type",
+            "claim_type",
+            "proposition",
+            "evidence_links",
+            "review_state"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "uncertainty": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "record_type": {
+              "const": "uncertainty"
+            },
+            "dimension": {
+              "enum": [
+                "source",
+                "integrity",
+                "provenance",
+                "independence",
+                "temporal",
+                "interpretive",
+                "measurement",
+                "model",
+                "coverage",
+                "causal",
+                "other"
+              ]
+            },
+            "description": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 5000
+            },
+            "affected_record_ids": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/id"
+              },
+              "minItems": 1,
+              "uniqueItems": true
+            },
+            "basis": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 5000
+            },
+            "level": {
+              "enum": [
+                "low",
+                "moderate",
+                "high",
+                "critical",
+                "unassessed"
+              ]
+            },
+            "numeric_estimate": {
+              "type": "object",
+              "required": [
+                "value",
+                "method"
+              ],
+              "properties": {
+                "value": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "method": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "calibration_reference": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
+            },
+            "consequence_if_unresolved": {
+              "type": "string",
+              "maxLength": 5000
+            },
+            "resolution_condition": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 5000
+            },
+            "status": {
+              "enum": [
+                "open",
+                "partially_resolved",
+                "resolved",
+                "accepted",
+                "reopened"
+              ]
+            }
+          },
+          "required": [
+            "record_type",
+            "dimension",
+            "description",
+            "affected_record_ids",
+            "basis",
+            "level",
+            "resolution_condition",
+            "status"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "review": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "record_type": {
+              "const": "review"
+            },
+            "target_id": {
+              "$ref": "#/$defs/id"
+            },
+            "target_version": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "requirement": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 3000
+            },
+            "trigger": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 3000
+            },
+            "reviewer": {
+              "type": "object",
+              "required": [
+                "identity_type",
+                "identity"
+              ],
+              "properties": {
+                "identity_type": {
+                  "enum": [
+                    "human",
+                    "automated_process",
+                    "service"
+                  ]
+                },
+                "identity": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 256
+                },
+                "authority_scope": {
+                  "type": "string",
+                  "maxLength": 1000
+                }
+              },
+              "additionalProperties": false
+            },
+            "checks": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "check_id",
+                  "result"
+                ],
+                "properties": {
+                  "check_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "result": {
+                    "enum": [
+                      "pass",
+                      "fail",
+                      "inconclusive",
+                      "not_applicable"
+                    ]
+                  },
+                  "notes": {
+                    "type": "string",
+                    "maxLength": 3000
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "decision": {
+              "enum": [
+                "approve",
+                "reject",
+                "qualify",
+                "defer",
+                "escalate"
+              ]
+            },
+            "rationale": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 10000
+            },
+            "evidence_snapshot": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "version"
+                ],
+                "properties": {
+                  "id": {
+                    "$ref": "#/$defs/id"
+                  },
+                  "version": {
+                    "type": "integer",
+                    "minimum": 1
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "reviewed_at": {
+              "$ref": "#/$defs/timestamp"
+            },
+            "reassess_at": {
+              "$ref": "#/$defs/timestamp"
+            },
+            "reassessment_trigger": {
+              "type": "string",
+              "maxLength": 3000
+            }
+          },
+          "required": [
+            "record_type",
+            "target_id",
+            "target_version",
+            "requirement",
+            "trigger",
+            "reviewer",
+            "checks",
+            "decision",
+            "rationale",
+            "evidence_snapshot",
+            "reviewed_at"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "audit_event": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "record_type": {
+              "const": "audit_event"
+            },
+            "event_type": {
+              "enum": [
+                "created",
+                "assessed",
+                "linked",
+                "state_transition",
+                "reviewed",
+                "released",
+                "rejected",
+                "revised",
+                "superseded",
+                "accessed",
+                "exported",
+                "other"
+              ]
+            },
+            "actor": {
+              "type": "object",
+              "required": [
+                "identity_type",
+                "identity"
+              ],
+              "properties": {
+                "identity_type": {
+                  "enum": [
+                    "human",
+                    "automated_process",
+                    "service",
+                    "system"
+                  ]
+                },
+                "identity": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 256
+                }
+              },
+              "additionalProperties": false
+            },
+            "target_id": {
+              "$ref": "#/$defs/id"
+            },
+            "target_version": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "event_time": {
+              "$ref": "#/$defs/timestamp"
+            },
+            "record_time": {
+              "$ref": "#/$defs/timestamp"
+            },
+            "prior_state": {
+              "type": "string",
+              "maxLength": 128
+            },
+            "resulting_state": {
+              "type": "string",
+              "maxLength": 128
+            },
+            "reason": {
+              "type": "string",
+              "maxLength": 5000
+            },
+            "related_record_ids": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/id"
+              },
+              "uniqueItems": true
+            },
+            "correlation_id": {
+              "$ref": "#/$defs/id"
+            }
+          },
+          "required": [
+            "record_type",
+            "event_type",
+            "actor",
+            "target_id",
+            "event_time",
+            "record_time"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    }
+  }
+}
