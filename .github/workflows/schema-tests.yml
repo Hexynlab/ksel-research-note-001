@@ -1,4 +1,4 @@
-name: KSEL schema validation
+name: KSEL public validation suite
 
 on:
   push:
@@ -23,5 +23,8 @@ jobs:
       - name: Install schema validation dependency
         run: python -m pip install -r implementation/requirements-dev.txt
 
-      - name: Run KSEL schema validation suite
-        run: python -m unittest discover -s implementation/tests -p "test_profile_a_schema.py" -v
+      - name: Run Profile A schema and reference-engine tests
+        run: python -m unittest discover -s implementation/tests -p "test_*.py" -v
+
+      - name: Run RN-008 prediction-schema and evaluator tests
+        run: python -m unittest discover -s benchmark/evaluation -p "test_*.py" -v
