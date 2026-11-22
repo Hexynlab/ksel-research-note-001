@@ -48,6 +48,16 @@ class PredictionSchemaTests(unittest.TestCase):
         prediction = dict(self.examples[0], review_completed="yes")
         self.assertTrue(list(self.validator.iter_errors(prediction)))
 
+    def test_unresolved_pairs_are_valid_and_optional(self):
+        prediction = dict(self.examples[0], unresolved_pairs=[{"evidence_a": "E1", "evidence_b": "E2"}])
+        self.validator.validate(prediction)
+        prediction.pop("unresolved_pairs")
+        self.validator.validate(prediction)
+
+    def test_malformed_unresolved_pair_is_rejected(self):
+        prediction = dict(self.examples[0], unresolved_pairs=[{"evidence_a": "E1"}])
+        self.assertTrue(list(self.validator.iter_errors(prediction)))
+
     def test_malformed_pair_is_rejected(self):
         prediction = dict(self.examples[0])
         prediction["independent_pairs"] = [{"evidence_a": "E-1", "unexpected": "E-2"}]
