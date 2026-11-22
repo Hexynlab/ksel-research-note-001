@@ -30,7 +30,13 @@ python benchmark/evaluation/evaluate.py \
   --predictions benchmark/examples/predictions.example.jsonl
 ```
 
-The example file intentionally contains only one row and will fail completeness validation against the 12-case dataset. It is a format example, not a scored submission. Create one prediction row per dataset case before running a complete evaluation.\n\nRun the test suite with:\n\n```bash\npython -m unittest discover -s benchmark/evaluation -p "test_*.py" -v\n```
+The example file intentionally contains only one row and will fail completeness validation against the 12-case dataset. It is a format example, not a scored submission. Create one prediction row per dataset case before running a complete evaluation.
+
+Run the test suite with:
+
+```bash
+python -m unittest discover -s benchmark/evaluation -p "test_*.py" -v
+```
 
 ## Prediction contract
 
