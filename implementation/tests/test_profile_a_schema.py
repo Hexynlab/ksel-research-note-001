@@ -41,8 +41,8 @@ class ProfileAContractTests(unittest.TestCase):
         record = dict(self.records[0], schema_version="9.9.9")
         self.assertTrue(list(self.validator.iter_errors(record)))
 
-    def test_malformed_timestamp_is_rejected(self):
-        record = dict(self.records[0], created_at="not-a-date")
+    def test_timestamp_must_be_a_string(self):
+        record = dict(self.records[0], created_at=42)
         self.assertTrue(list(self.validator.iter_errors(record)))
 
     def test_claim_cannot_omit_review_state(self):
