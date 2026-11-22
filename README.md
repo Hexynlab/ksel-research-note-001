@@ -117,7 +117,7 @@ The series distinguishes source evidence, claims, inference and recommendations.
 │   ├── schemas/
 │   ├── examples/
 │   ├── tests/
-│   └── Profile A and evaluation specifications
+│   └── *.md (implementation specifications)
 ├── research/
 ├── scripts/
 │   ├── test_validate_release.py
