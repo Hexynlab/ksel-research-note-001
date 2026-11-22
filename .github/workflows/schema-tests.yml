@@ -2,6 +2,8 @@ name: KSEL public validation suite
 
 on:
   push:
+    branches:
+      - main
   pull_request:
 
 permissions:
