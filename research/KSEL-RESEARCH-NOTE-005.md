@@ -542,6 +542,15 @@ A recommendation should disclose the decision question, alternatives, constraint
 **Scenario:** Coherent set of assumed conditions used to examine possible consequences.  
 **Sensitivity analysis:** Examination of how conclusions change when inputs, assumptions, or preferences vary.
 
+## Selected references and related work
+
+These sources inform causal reasoning and decision analysis. They are included to situate the proposed architecture, not to imply that a graph or a model output alone identifies causal effects.
+
+1. Pearl, J. (2009). *Causality: Models, Reasoning, and Inference* (2nd ed.). Cambridge University Press. https://www.cambridge.org/9780521895606 — Structural causal models, interventions, and causal reasoning.
+2. Hernán, M. A., & Robins, J. M. (2020). *Causal Inference: What If*. Chapman & Hall/CRC. https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/ — Causal inference methods, assumptions, and longitudinal data.
+3. Keeney, R. L., & Raiffa, H. (1976). *Decisions with Multiple Objectives: Preferences and Value Tradeoffs*. Wiley. https://doi.org/10.1017/CBO9781139174084 — Objectives, constraints, and preference-sensitive decision analysis.
+4. Howard, R. A. (1966). Information Value Theory. *IEEE Transactions on Systems Science and Cybernetics, 2*(1), 22–26. https://doi.org/10.1109/TSSC.1966.300074 — The value of information in decisions under uncertainty.
+
 ## Appendix D — Publication integrity statement
 
 This document presents a preliminary research framework developed within the KSEL programme at H3XYN LAB. Its architecture, node types, relationships, workflows, hypotheses, and evaluation methods are proposals for investigation.
@@ -551,3 +560,7 @@ No empirical validation, benchmark result, production deployment, certification,
 ---
 
 **End of KSEL Research Note 005**
+
+**Suggested citation**
+
+H3XYN LAB. (2026). *KSEL Research Note 005: Decision Intelligence, Causal Reasoning, and Evidence-Based Decision Systems* (Version 0.1.0). H3XYN LAB Technical Research Notes. https://github.com/Hexynlab/ksel-research-note-001
