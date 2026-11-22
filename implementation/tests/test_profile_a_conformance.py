@@ -6,7 +6,11 @@ not an independent third-party replication or evidence of KSEL effectiveness.
 """
 import json
 import unittest
+import sys
 from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
 
 from ksel_profile_a import (
     HashChainAuditLedger,
@@ -16,7 +20,6 @@ from ksel_profile_a import (
     validate_records,
 )
 
-ROOT = Path(__file__).resolve().parents[1]
 FIXTURE = ROOT / "examples" / "profile-a-examplelib.jsonl"
 
 
