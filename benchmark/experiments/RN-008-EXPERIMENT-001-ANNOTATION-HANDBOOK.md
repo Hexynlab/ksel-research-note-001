@@ -116,7 +116,7 @@ Confidence is not a substitute for the categorical label and must not be interpr
 - Report raw agreement and an appropriate chance-corrected statistic if its assumptions fit the label structure.
 - A separately identified adjudicator or panel reviews disagreements using the same packet and handbook.
 - Preserve the adjudicator's decision and rationale alongside, not in place of, the original labels.
-- If adjudication cannot resolve the relationship, retain it as unresolved. Do not force consensus.
+- If adjudication cannot resolve the relationship, retain the pair with its AMBIGUOUS / INSUFFICIENT or CONFLICTING LINEAGE label, as appropriate. Do not force consensus or convert it to a binary label.
 
 Annotator qualifications, training, relevant experience and conflicts of interest must be documented separately.
 
@@ -137,7 +137,7 @@ After the handbook is frozen:
 This handbook does not determine:
 - sample size;
 - sampling strategy;
-- statistical treatment of conflicting or ambiguous pairs;
+- detailed statistical treatment or subgroup reporting for ambiguous pairs;
 - primary metric calculation;
 - practical significance thresholds;
 - whether an experiment is confirmatory.
