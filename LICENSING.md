@@ -1,36 +1,70 @@
 # KSEL licensing
 
-**Attribution requested and required by the applicable licences: H3XYN LAB.**
+**Publishing-source attribution: H3XYN LAB.**
 
-KSEL is intentionally reusable in commercial and non-commercial settings. Subject to the scope and conditions below, you may use, reproduce, modify, distribute, and build upon the covered material. No fee or separate permission is required for uses permitted by these licences.
+KSEL is intended for commercial and non-commercial reuse, subject to the applicable licence terms. This guide defines the file-level scope so that the two licences are not confused or applied to third-party material.
 
-## Licence map
+## Exact licence map
 
-| Material | Licence | Scope |
-|---|---|---|
-| Software source, tests, scripts, CI workflows, configuration, and machine-readable schemas | Apache License 2.0 | `*.py`, `*.yml`, `*.yaml`, `requirements-dev.txt`, and JSON Schema files under `implementation/schemas/` and `benchmark/schemas/`; see the repository's software directories |
-| Research notes, research and governance policies, implementation specifications, benchmark specifications, explanatory Markdown, citation metadata, and synthetic/example datasets | Creative Commons Attribution 4.0 International (CC BY 4.0) | Markdown prose across the repository; `CITATION.cff`; `benchmark/data/**`; `benchmark/examples/**`; and `implementation/examples/**` |
+### Apache License 2.0 — software and machine-readable implementation
 
-The root `LICENSE` contains the Apache 2.0 text and applies only to the software artefacts above. `LICENSE-DOCS` contains the CC BY 4.0 legal code for the documentation and data above. Where a file's type or location makes its classification unclear, use this map and the explicit file-level notices; do not assume that one licence overrides the other.
+The Apache 2.0 grant in [LICENSE](LICENSE) applies to these repository paths:
+
+- `.github/workflows/*.yml` — CI and release workflow definitions.
+- `implementation/ksel_profile_a.py`.
+- `implementation/tests/*.py`.
+- `implementation/schemas/*.json`.
+- `implementation/requirements-dev.txt`.
+- `benchmark/evaluation/*.py`.
+- `benchmark/schemas/*.json`.
+- `scripts/*.py`.
+
+### Creative Commons Attribution 4.0 International — research prose and published examples
+
+The CC BY 4.0 grant in [LICENSE-DOCS](LICENSE-DOCS) applies to original H3XYN LAB material in these paths:
+
+- `research/*.md`.
+- `governance/*.md`.
+- `implementation/*.md`.
+- `benchmark/*.md`.
+- Root documentation: `README.md`, `CONTRIBUTING.md`, `CHANGELOG.md`, `RESEARCH-ROADMAP.md`.
+- `CITATION.cff` to the extent its original metadata is copyrightable.
+- `benchmark/data/**`, `benchmark/examples/**`, and `implementation/examples/**`, subject to the third-party exclusions below.
+
+### Notices and release metadata
+
+- `LICENSE` and `LICENSE-DOCS` reproduce the respective standard licence texts and scope notices; those legal texts are not relicensed as original H3XYN LAB content.
+- `NOTICE` is an attribution notice, not a separate licence grant.
+- `LICENSING.md` is a scope guide under CC BY 4.0 to the extent copyright subsists in its original prose.
+- `VERSION` contains release metadata and is not separately offered as a creative work under either grant.
+- Any path not expressly listed above is not automatically covered by either licence. Check for a file-specific notice or obtain permission before reuse.
 
 ## Attribution
 
-When redistributing or adapting covered material, retain the applicable copyright and licence notices and identify **H3XYN LAB** as the source. For CC BY 4.0 material, provide attribution, a link to the licence, indicate whether changes were made, and avoid implying endorsement. For Apache-licensed software, retain the applicable notices and include the Apache 2.0 licence; mark modified files appropriately. Attribution does not grant permission to use H3XYN LAB's name or marks to imply sponsorship, endorsement, or official affiliation.
+For CC BY 4.0 material, provide appropriate credit to **H3XYN LAB**, link to the licence, indicate whether changes were made, and do not imply endorsement. For Apache-licensed software, provide a copy of the licence, retain applicable copyright, patent, trademark and attribution notices, reproduce relevant NOTICE content, and mark modified files as required by Apache 2.0.
 
 Suggested attribution:
 
-> KSEL research and/or implementation by H3XYN LAB. Original source: https://github.com/Hexynlab/ksel-research-note-001. Licensed under the applicable licence stated in the repository's LICENSING.md.
+> KSEL research and/or implementation by H3XYN LAB. Original source: https://github.com/Hexynlab/ksel-research-note-001. Licensed under the applicable licence stated in LICENSING.md. Changes: [describe changes or state none].
 
-## Exclusions and third-party material
+Attribution identifies the publishing source; it does not grant permission to use H3XYN LAB names or marks to imply sponsorship, endorsement, or official affiliation.
 
-These licences apply only to material for which H3XYN LAB has the rights to grant them. Third-party material, quoted excerpts, external standards, dependencies, trademarks, logos, and linked resources are not relicensed by this notice. Their own terms and rights continue to apply. Public availability alone does not establish that third-party material may be reused.
+## Third-party material and exclusions
 
-The licences do not grant trademark rights or imply endorsement. They do not waive any rights that cannot legally be waived. No certification, validation, support, or warranty is provided by the research publications.
+The grants apply only to original material for which the relevant rights holder has authority to grant the stated permissions. They do not relicense:
+
+- Third-party quotations, figures, tables, images, datasets, code, or other embedded material.
+- External standards, specifications, and linked resources.
+- Software dependencies and their licences.
+- Trademarks, logos, names, or other rights not expressly granted.
+- Material identified by a file-specific third-party notice.
+
+A citation or link is not itself permission to reproduce or adapt the cited work. Preserve third-party notices and comply with the rights holder's terms. Public availability does not establish reuse permission.
 
 ## Contributions
 
-By intentionally submitting a contribution for inclusion, you confirm that you have the right to submit it and agree that, if accepted, your contribution will be made available under the licence applicable to its type as described above, unless you clearly identify and obtain approval for different terms before submission. You retain ownership of your contribution. Do not submit third-party or confidential material without the necessary rights and permissions.
+By intentionally submitting a contribution for inclusion, you confirm that you have the rights needed to submit it and agree that, if accepted, it may be distributed under the licence applicable to its file type above, unless different terms are disclosed and approved before inclusion. You retain ownership of your contribution. Do not submit confidential or third-party material without necessary rights and permissions. For AI-assisted contributions, the submitter remains responsible for reviewing the output, checking applicable tool terms, and screening for third-party material or other restrictions.
 
 ## Important
 
-This file is a plain-language scope guide, not a substitute for the full licence texts. The full terms are in [LICENSE](LICENSE) (Apache 2.0) and [LICENSE-DOCS](LICENSE-DOCS) (CC BY 4.0). This is not legal advice. Confirm that H3XYN LAB controls the rights in all material before publishing these grants; seek qualified advice for ownership, patents, trademarks, or third-party rights.
+This is a plain-language scope guide, not legal advice or a determination of copyright ownership. The full licence terms are in [LICENSE](LICENSE) and [LICENSE-DOCS](LICENSE-DOCS). H3XYN LAB should apply these grants only to material for which it has the necessary rights. Seek qualified advice for ownership, patents, trademarks, and third-party rights.
