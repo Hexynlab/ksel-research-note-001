@@ -38,7 +38,14 @@ Complete, timestamp and publish this document before confirmatory runs. Do not b
 - Dataset name/version:
 - Source and licensing:
 - Sampling and generation method:
-- Annotation protocol:
+- Annotation protocol and handbook version:
+- Number of independent annotators per item (minimum two for confirmatory human-labelled data):
+- Annotator qualifications, relevant experience and conflicts of interest:
+- Blinding to system condition/output, where feasible:
+- Independent-label retention and disagreement reporting:
+- Agreement statistics and rationale:
+- Adjudicator/panel identity, independence and adjudication procedure:
+- Ambiguous/uncertain/unresolved label policy:
 - Adjudication:
 - Train/dev/test separation:
 - Leakage controls:
