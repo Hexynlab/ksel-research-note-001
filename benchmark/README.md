@@ -90,4 +90,4 @@ Before confirmatory experiments, H3XYN LAB should:
 
 ## Licence
 
-The benchmark specification, explanatory documentation, synthetic development dataset, and example prediction data are licensed under **CC BY 4.0**, with attribution to **H3XYN LAB**. The evaluator and its tests, and the prediction JSON Schema, are licensed under **Apache 2.0**. See the repository's [LICENSING.md](../LICENSING.md) for exact scope, attribution requirements, and third-party exclusions.
+The benchmark specification, explanatory documentation, synthetic development dataset, and example prediction data are licensed under **CC BY 4.0**. The evaluator and its tests, and the prediction JSON Schema, are licensed under **Apache 2.0**. See the repository's [LICENSING.md](../LICENSING.md) for the exact file-level scope, attribution requirements, and third-party exclusions.
