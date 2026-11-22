@@ -70,7 +70,8 @@ The current deterministic evaluator operationalises the following measures:
 - valid-evidence retention;
 - false-acceptance rate;
 - stale-evidence detection recall;
-- dependent-pair and independent-pair precision, recall and F1 over explicitly annotated pairs;\n- explicit unresolved-prediction rate and source-dependence classification coverage across all explicitly labelled pairs;
+- dependent-pair and independent-pair precision, recall and F1 over explicitly annotated pairs;
+- explicit unresolved-prediction rate and source-dependence classification coverage across all explicitly labelled pairs;
 - false-independence and false-dependence rates over explicitly annotated gold pairs;
 - contradiction-preservation precision, recall and F1;
 - decision-status exact-match accuracy against the case-specific expected status;
