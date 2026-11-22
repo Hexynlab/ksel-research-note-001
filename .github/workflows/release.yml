@@ -1,0 +1,57 @@
+name: KSEL release validation
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ksel-release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  validate-and-publish:
+    name: validate-and-publish
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out tagged source
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Confirm tag points to protected main history
+        env:
+          TAG_COMMIT: ${{ github.sha }}
+        run: |
+          git fetch origin main
+          git merge-base --is-ancestor "$TAG_COMMIT" origin/main
+
+      - name: Validate release metadata
+        env:
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: python scripts/validate_release.py --tag "$RELEASE_TAG"
+
+      - name: Run required schema and contract validation
+        run: |
+          python -m pip install -r implementation/requirements-dev.txt
+          python -m unittest discover -s implementation/tests -p "test_*.py" -v
+          python -m unittest discover -s benchmark/evaluation -p "test_*.py" -v
+          python -m unittest discover -s scripts -p "test_*.py" -v
+
+      - name: Publish GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: |
+          gh release create "$RELEASE_TAG" \
+            --verify-tag \
+            --title "KSEL $RELEASE_TAG" \
+            --generate-notes
