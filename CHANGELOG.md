@@ -1,5 +1,14 @@
 # KSEL Repository Changelog
 
+## [0.1.2] - 2026-11-22
+
+### Changed
+- Corrected the public institutional attribution from H3XYN LAB to HEXYN LAB across the repository's research notes, governance, citation metadata, notices and documentation.
+
+### Release integrity
+- This patch release records an institutional naming correction only. It does not change implementation logic, research methods, research claims, evaluation results or validation status.
+
+
 This changelog records material changes to the public KSEL repository release series. Individual research notes and experimental artefacts may also maintain their own version histories.
 
 ## [0.1.1] - 2026-11-22
