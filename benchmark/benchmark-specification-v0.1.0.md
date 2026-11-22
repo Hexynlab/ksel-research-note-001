@@ -1,4 +1,4 @@
-# KSEL RN-008 — Benchmark Specification v0.2.0
+# KSEL RN-008 — Benchmark Specification v0.1.0
 
 **Status:** Development specification; not a validated benchmark  
 **Owner:** H3XYN LAB  
@@ -7,7 +7,7 @@
 
 ## 1. Purpose
 
-Define the 0.2.0 public development fixture and machine-readable prediction contract for testing selected KSEL evidence-governance tasks. This is an engineering specification for a small synthetic fixture, not a validated or confirmatory benchmark.
+Define a small, transparent development fixture and machine-readable prediction contract for testing whether KSEL evaluation concepts can be operationalised. This specification is a first engineering step, not a claim that the benchmark is scientifically complete.
 
 ## 2. Unit of evaluation
 
@@ -25,21 +25,21 @@ A system processes each case and emits one prediction record conforming to `sche
 
 ## 3. Development fixture
 
-The v0.2.0 fixture at `data/dev/ksel-synthetic-dev-v0.2.jsonl` contains 15 hand-authored fictional cases covering:
-
-- clean evidence and traceability;
-- duplicated and source-dependent evidence;
-- stale, superseded and context-mismatched evidence;
-- provenance failure and incomplete provenance;
-- contradictory evidence and conflicting source-history assertions;
+The v0.1.0 fixture contains 12 hand-authored fictional cases covering:
+- clean evidence;
+- duplicated and dependent sources;
+- stale evidence;
+- provenance failure;
+- context mismatch;
+- contradictory evidence;
 - embedded untrusted instructions;
+- incomplete provenance;
 - system-generated evidence;
+- superseded versions;
 - insufficient causal evidence;
-- review and authorization gates;
-- ambiguous lineage requiring uncertainty or review;
-- multi-hop source dependence.
+- review and authorization gates.
 
-The fixture is intended for smoke testing and evaluator development only. It is public, small, synthetic and not independently adjudicated. It is not a blind test set and cannot support claims about real-world prevalence, generalisation or system effectiveness.
+The fixture is intended for smoke testing and evaluator development only. It is too small and too artificial to support general performance claims.
 
 ## 4. Gold annotation model
 
@@ -63,22 +63,17 @@ Unknown or missing case IDs are errors. Duplicate prediction rows are errors. Th
 
 ## 6. Metrics
 
-The current deterministic evaluator operationalises the following measures:
-
+The evaluator calculates:
 - micro precision, recall and F1 for traceability links;
 - precision, recall and F1 for invalid-evidence detection;
 - valid-evidence retention;
 - false-acceptance rate;
 - stale-evidence detection recall;
-- dependent-pair and independent-pair precision, recall and F1 over explicitly annotated pairs;
-- false-independence and false-dependence rates over explicitly annotated gold pairs;
+- false-corroboration rate;
 - contradiction-preservation precision, recall and F1;
-- decision-status exact-match accuracy against the case-specific expected status;
 - review and authorization compliance.
 
-Unlabelled source pairs are not silently treated as independent or dependent; predictions for unlabelled pairs are rejected. Undefined denominators are reported as null. No weighted composite is defined.
-
-The RN-008 research programme also proposes outcomes such as calibration, unsupported-certainty rate, audit reconstruction, unauthorized state transitions, human review effort, latency, compute and monetary cost. These are **not operationalised by the current public evaluator**. They require additional schemas, event records, measurement procedures and/or human annotation before they can be reported. They must not be presented as current benchmark metrics.
+All metrics are reported separately. No weighted composite is defined in v0.1.0 because weights would encode unvalidated value judgements.
 
 ## 7. Known limitations
 
@@ -87,9 +82,8 @@ The RN-008 research programme also proposes outcomes such as calibration, unsupp
 - Synthetic, fictional, English-language examples.
 - No domain expert panels or inter-annotator agreement data.
 - No real-world dataset or deployment evidence.
-- No latency, compute, monetary-cost or human-workload measurement in the current evaluator.
-- No probabilistic outputs; calibration and unsupported-certainty rates are not measured.
-- No event-history representation for audit reconstruction or unauthorized-transition measurement.
+- No latency, compute, monetary-cost or human-workload measurement.
+- No probabilistic outputs; calibration is not measured.
 - No adversarial robustness claim beyond one illustrative content case.
 - No causal-effect claim.
 
@@ -110,4 +104,4 @@ Do not label a study confirmatory until:
 
 ## 10. Interpretation rule
 
-A high score on this public development fixture means only that a submitted output aligns with the annotations in these 15 fictional cases under the published evaluator. It does not establish factual accuracy, general reasoning ability, real-world governance effectiveness, safety, certification or independent validation.
+A high score on this public development fixture means only that a submitted output aligns with the annotations in these 12 fictional cases under the published evaluator. It does not establish factual accuracy, general reasoning ability, real-world governance effectiveness, safety, certification or independent validation.
