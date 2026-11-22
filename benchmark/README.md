@@ -66,7 +66,9 @@ The current evaluator operationalises only the measures listed below. RN-008 pro
 - Valid-evidence retention: proportion of gold valid evidence retained by the system.
 - False-acceptance rate: proportion of gold invalid evidence accepted by the system.
 - Stale-evidence detection recall: proportion of stale evidence flagged.
-- Dependent-pair and independent-pair detection: precision, recall and F1 over explicitly annotated pairs.\n- False-independence and false-dependence rates: misclassification rates over the corresponding explicitly annotated gold pairs.\n- Unlabelled source pairs: predictions are rejected; ambiguous/conflicting gold pairs are excluded from binary dependence metrics and reported separately.
+- Dependent-pair and independent-pair detection: precision, recall and F1 over explicitly annotated pairs.
+- False-independence and false-dependence rates: misclassification rates over the corresponding explicitly annotated gold pairs.
+- Unlabelled source pairs: predictions are rejected; ambiguous/conflicting gold pairs are excluded from binary dependence metrics and reported separately.
 - Explicit unresolved-prediction rate and source-dependence classification coverage, using all explicitly labelled gold pairs as the denominator.
 - Contradiction preservation: precision, recall and F1 over annotated contradiction pairs.
 - Decision-status accuracy: exact match against the case-specific expected status. This is a coarse annotation check, not a measure of general reasoning quality.
