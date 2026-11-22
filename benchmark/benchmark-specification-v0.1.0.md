@@ -18,9 +18,10 @@ The unit is one synthetic case containing:
 - gold valid and invalid evidence sets;
 - known dependent-source pairs;
 - known contradiction pairs;
-- a review-required flag.
+- a review-required flag;
+- an expected decision-status label for a coarse abstention/review outcome check.
 
-A system processes each case and emits one prediction record conforming to `schemas/prediction.schema.json`.
+A system processes each case and emits one prediction record conforming to `schemas/prediction.schema.json`. The prediction includes a coarse decision status: `supported`, `uncertain`, `unsupported` or `review_required`.
 
 ## 3. Development fixture
 
@@ -49,7 +50,8 @@ Each case includes:
 - `stale_evidence_ids`: evidence that is temporally stale or superseded;
 - `dependent_pairs`: pairs that must not be counted as independent corroboration;
 - `contradiction_pairs`: material contradictions that should remain visible;
-- `review_required`: whether the case requires review and authorization records.
+- `review_required`: whether the case requires review and authorization records;
+- `expected_decision_status`: case-specific expected decision state for a limited exact-match metric.
 
 An evidence item may be valid yet insufficient to establish a claim. The labels are case-specific and do not imply that evidence validity alone proves the claim.
 
