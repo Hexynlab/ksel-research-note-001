@@ -15,7 +15,7 @@ from typing import Any, Iterable, Mapping
 from jsonschema import Draft202012Validator, FormatChecker
 
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parent
 SCHEMA_PATH = ROOT / "schemas" / "profile-a.schema.json"
 
 ALLOWED_TRANSITIONS = {
