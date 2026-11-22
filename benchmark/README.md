@@ -90,4 +90,4 @@ Before confirmatory experiments, H3XYN LAB should:
 
 ## Licence
 
-No reuse licence is implied by public visibility. Check the repository's licence status and third-party rights before reusing or redistributing these materials.
+The benchmark specification, explanatory documentation, synthetic development dataset, and example prediction data are licensed under **CC BY 4.0**, with attribution to **H3XYN LAB**. The evaluator and its tests, and the prediction JSON Schema, are licensed under **Apache 2.0**. See the repository's [LICENSING.md](../LICENSING.md) for exact scope, attribution requirements, and third-party exclusions.
