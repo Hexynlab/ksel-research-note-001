@@ -1,5 +1,16 @@
 # KSEL Repository Changelog
 
+## [0.1.3] - 2026-11-22
+
+### Changed
+- Added the Zenodo concept DOI badge to the repository README.
+- Updated the recommended citation to identify Kushal Sunkur with HEXYN LAB affiliation.
+- Updated CITATION.cff with the individual author, current repository version and concept DOI.
+
+### Release integrity
+- This patch release updates citation and publication metadata only. It does not change implementation logic, research methods, research claims, evaluation results or validation status.
+
+
 ## [0.1.2] - 2026-11-22
 
 ### Changed
