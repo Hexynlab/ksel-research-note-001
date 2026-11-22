@@ -13,6 +13,7 @@ They are not representative of real-world prevalence, domain difficulty, or oper
 
 ## Contents
 
+- `benchmark-specification-v0.2.0.md` — versioned benchmark scope, annotations and current evaluator metric specification.
 - `data/dev/ksel-synthetic-dev-v0.2.jsonl` — 15 annotated synthetic cases, including ambiguous lineage, multi-hop dependence and conflicting provenance histories.
 - `schemas/prediction.schema.json` — expected prediction record shape.
 - `examples/predictions.example.jsonl` — one example prediction.
