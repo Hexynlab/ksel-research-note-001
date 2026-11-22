@@ -5,6 +5,7 @@
 **Programme:** KSEL — Knowledge, Source, Evidence Layer  
 **Repository status:** Active public research publication  
 **Current publication set:** Research Notes 001–008  
+**Repository release:** See [VERSION](VERSION) and [CHANGELOG](CHANGELOG.md)  
 **Last updated:** 22 November 2026
 
 KSEL is a proposed research architecture for making evidence traceable, uncertainty inspectable, knowledge revision governable, and review decisions auditable in intelligent systems.
@@ -24,6 +25,9 @@ This repository publishes the KSEL research-note series and its supporting resea
 | [Publication and Review Policy](governance/PUBLICATION-AND-REVIEW-POLICY.md) | Publication status, versioning, review and correction practices |
 | [Public Disclosure Policy](governance/PUBLIC-DISCLOSURE-POLICY.md) | What may be published and what requires protection or review |
 | [Reproducibility Standard](governance/REPRODUCIBILITY-STANDARD.md) | Minimum reporting requirements for empirical work |
+| [Release Governance v1.0](governance/RELEASE-GOVERNANCE.md) | Versioning, release validation, publication integrity and corrections |
+| [Release Checklist](governance/RELEASE-CHECKLIST.md) | Required pre-publication review |
+| [Changelog](CHANGELOG.md) | Repository release history |
 | [Contributing Guide](CONTRIBUTING.md) | How to submit criticism, corrections, reviews and research contributions |
 | [Citation metadata](CITATION.cff) | Citation information for the research series |
 
@@ -97,29 +101,37 @@ The series distinguishes source evidence, claims, inference and recommendations.
 
 ```text
 .
-├── CITATION.cff
-├── CONTRIBUTING.md
-├── README.md
-├── RESEARCH-ROADMAP.md
+├── .github/workflows/
+│   ├── release.yml
+│   └── schema-tests.yml
+├── benchmark/
 ├── governance/
 │   ├── PUBLIC-DISCLOSURE-POLICY.md
 │   ├── PUBLICATION-AND-REVIEW-POLICY.md
+│   ├── RELEASE-CHECKLIST.md
+│   ├── RELEASE-GOVERNANCE.md
 │   ├── REPRODUCIBILITY-STANDARD.md
 │   └── RESEARCH-INTEGRITY.md
-└── research/
-    ├── KSEL-RESEARCH-NOTE-001.md
-    ├── KSEL-RESEARCH-NOTE-002.md
-    ├── KSEL-RESEARCH-NOTE-003.md
-    ├── KSEL-RESEARCH-NOTE-004.md
-    ├── KSEL-RESEARCH-NOTE-005.md
-    ├── KSEL-RESEARCH-NOTE-006.md
-    ├── KSEL-RESEARCH-NOTE-007.md
-    └── KSEL-RESEARCH-NOTE-008.md
+├── research/
+├── scripts/
+│   ├── test_validate_release.py
+│   └── validate_release.py
+├── CHANGELOG.md
+├── CITATION.cff
+├── CONTRIBUTING.md
+├── README.md
+└── VERSION
 ```
 
 ## RN-008 experimental artefacts
 
 The [RN-008 experimental starter kit](benchmark/README.md) contains a transparent synthetic development fixture, prediction schema, deterministic evaluator, benchmark specification and preregistration template. Its 12 fictional cases are for development only and are not a validated or blind benchmark.
+
+## Release process
+
+KSEL repository releases use semantic version tags in the form `vMAJOR.MINOR.PATCH`. The root `VERSION` and `CHANGELOG.md` must agree with the tag. The release workflow checks that the tagged commit is reachable from `main`, validates release metadata and reruns the public test suites before publishing a GitHub Release.
+
+See [Release Governance v1.0](governance/RELEASE-GOVERNANCE.md) and the [Release Checklist](governance/RELEASE-CHECKLIST.md). A successful release workflow confirms only that configured checks passed; it does not establish scientific validation, certification or independent replication.
 
 ## Research integrity
 
