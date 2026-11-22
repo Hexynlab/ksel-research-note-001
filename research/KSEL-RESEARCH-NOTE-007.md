@@ -779,6 +779,15 @@ These are proposed research and evaluation questions, not a certification standa
 
 ---
 
+## Selected references and related work
+
+These sources inform adaptive learning, model change, and documentation practices. They do not imply that KSEL's proposed revision controls have been implemented or empirically validated.
+
+1. Gama, J., Žliobaitė, I., Bifet, A., Pechenizkiy, M., & Bouchachia, A. (2014). A survey on concept drift adaptation. *ACM Computing Surveys, 46*(4), Article 44. https://doi.org/10.1145/2523813 — Adaptation to changing data distributions and evaluation methods.
+2. Sculley, D., et al. (2015). Hidden Technical Debt in Machine Learning Systems. *Advances in Neural Information Processing Systems 28*, 2503–2511. https://proceedings.neurips.cc/paper_files/paper/2015/hash/86df7dcfd896fcaf2674f757a2463eba-Abstract.html — System-level risks, feedback loops, dependencies, and maintenance costs.
+3. Mitchell, M., et al. (2019). Model Cards for Model Reporting. *Proceedings of the Conference on Fairness, Accountability, and Transparency*, 220–229. https://doi.org/10.1145/3287560.3287596 — Model documentation, intended use, and evaluation disclosure.
+4. National Institute of Standards and Technology. (2023). *Artificial Intelligence Risk Management Framework (AI RMF 1.0)*. NIST AI 100-1. https://doi.org/10.6028/NIST.AI.100-1 — Governed risk management across AI system lifecycle activities.
+
 ## Publication and research integrity statement
 
 This document presents a preliminary research framework developed for the KSEL research-note series of H3XYN LAB. Its architecture, schemas, lifecycle states, hypotheses, metrics, and implementation stages are proposals for investigation.
@@ -788,3 +797,7 @@ No empirical validation, benchmark result, production deployment, certification,
 Future revisions should preserve version history, document corrections, identify changes in assumptions, and distinguish proposed concepts from experimentally supported conclusions.
 
 **End of KSEL Research Note 007.**
+
+**Suggested citation**
+
+H3XYN LAB. (2026). *KSEL Research Note 007: Adaptive Intelligence, Evidence Learning, and Self-Correcting Knowledge Systems* (Version 0.1.0). H3XYN LAB Technical Research Notes. https://github.com/Hexynlab/ksel-research-note-001
