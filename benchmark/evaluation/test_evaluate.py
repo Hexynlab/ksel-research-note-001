@@ -8,15 +8,24 @@ SPEC = importlib.util.spec_from_file_location("ksel_evaluate", MODULE_PATH)
 MODULE = importlib.util.module_from_spec(SPEC)
 assert SPEC and SPEC.loader
 SPEC.loader.exec_module(MODULE)
-DATASET_PATH = MODULE_PATH.parents[1] / "data" / "dev" / "ksel-synthetic-dev-v0.1.jsonl"
+DATASET_PATH = MODULE_PATH.parents[1] / "data" / "dev" / "ksel-synthetic-dev-v0.2.jsonl"
 
 
 class EvaluatorTests(unittest.TestCase):
     def test_public_development_dataset_integrity(self):
         rows = MODULE.read_jsonl(DATASET_PATH)
-        self.assertEqual(len(rows), 12)
+        self.assertEqual(len(rows), 15)
         case_ids = [row["case_id"] for row in rows]
         self.assertEqual(len(case_ids), len(set(case_ids)))
+        by_id = {row["case_id"]: row for row in rows}
+        self.assertEqual(by_id["KSEL-DEV-013"]["gold"]["dependent_pairs"], [])
+        self.assertEqual(by_id["KSEL-DEV-013"]["gold"]["independent_pairs"], [])
+        self.assertEqual(
+            {tuple(pair) for pair in by_id["KSEL-DEV-014"]["gold"]["dependent_pairs"]},
+            {("E1", "E2"), ("E2", "E3"), ("E1", "E3")},
+        )
+        self.assertEqual(by_id["KSEL-DEV-015"]["gold"]["dependent_pairs"], [["E1", "E2"]])
+        self.assertEqual(by_id["KSEL-DEV-015"]["gold"]["provenance_conflicts"], [["E1", "E2"]])
         for row in rows:
             gold = row["gold"]
             evidence_ids = {item["evidence_id"] for item in row["evidence"]}
