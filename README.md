@@ -97,15 +97,24 @@ The series distinguishes source evidence, claims, inference and recommendations.
 
 ```text
 .
+├── .github/
+│   └── workflows/
+│       └── secret-scan.yml
 ├── CITATION.cff
 ├── CONTRIBUTING.md
 ├── README.md
 ├── RESEARCH-ROADMAP.md
+├── benchmark/
+│   └── RN-008 experimental starter kit
 ├── governance/
 │   ├── PUBLIC-DISCLOSURE-POLICY.md
 │   ├── PUBLICATION-AND-REVIEW-POLICY.md
 │   ├── REPRODUCIBILITY-STANDARD.md
 │   └── RESEARCH-INTEGRITY.md
+├── implementation/
+│   ├── Profile A reference implementation
+│   ├── schemas, examples and tests
+│   └── black-box conformance suite
 └── research/
     ├── KSEL-RESEARCH-NOTE-001.md
     ├── KSEL-RESEARCH-NOTE-002.md
@@ -116,6 +125,8 @@ The series distinguishes source evidence, claims, inference and recommendations.
     ├── KSEL-RESEARCH-NOTE-007.md
     └── KSEL-RESEARCH-NOTE-008.md
 ```
+
+The tree is a high-level guide; see each directory for its current files.
 
 ## RN-008 experimental artefacts
 
