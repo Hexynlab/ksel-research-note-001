@@ -1,0 +1,83 @@
+# RN-008 Experimental Starter Kit
+
+This directory contains the first public, executable research artefacts for KSEL RN-008.
+
+## Status and scope
+
+**Version:** 0.1.0  
+**Status:** Synthetic development fixture and deterministic evaluator; not a validated benchmark.
+
+The 12 cases in `data/dev/ksel-synthetic-dev-v0.1.jsonl` are fictional, hand-authored development examples. They exercise a small set of structural tasks: traceability, invalid-evidence detection, source dependence, temporal validity, contradiction preservation, and review/authorization records.
+
+They are not representative of real-world prevalence, domain difficulty, or operational risk. They are intentionally public and therefore unsuitable as a blind test set. Do not report scores on this fixture as evidence of general KSEL effectiveness.
+
+## Contents
+
+- `data/dev/ksel-synthetic-dev-v0.1.jsonl` — 12 annotated synthetic cases.
+- `schemas/prediction.schema.json` — expected prediction record shape.
+- `examples/predictions.example.jsonl` — one example prediction.
+- `evaluation/evaluate.py` — standard-library-only evaluator.
+
+## Run
+
+From the repository root, with Python 3.10 or later:
+
+```bash
+python evaluation/evaluate.py \
+  --dataset data/dev/ksel-synthetic-dev-v0.1.jsonl \
+  --predictions examples/predictions.example.jsonl
+```
+
+The example file intentionally contains only one row and will fail completeness validation against the 12-case dataset. It is a format example, not a scored submission. Create one prediction row per dataset case before running a complete evaluation.
+
+## Prediction contract
+
+Each prediction JSON object must include:
+
+- `case_id`
+- `traceability_links`: array of objects with `claim_id` and `evidence_id`
+- `accepted_evidence_ids`: evidence IDs treated as admissible
+- `flagged_evidence_ids`: evidence IDs flagged as invalid or requiring exclusion
+- `independent_pairs`: pairs treated as independent corroboration, each with `evidence_a` and `evidence_b`
+- `contradiction_pairs`: pairs retained as materially contradictory, same pair shape
+- `review_completed`: boolean
+- `authorization_valid`: boolean
+
+A system may abstain by leaving links or acceptance lists empty. Abstention is not automatically correct: the evaluator reports missed links and retention failures.
+
+## Metric definitions
+
+- Traceability: micro precision, recall and F1 over required claim-evidence links.
+- Invalid-evidence detection: precision, recall and F1 for the gold invalid evidence IDs.
+- Valid-evidence retention: proportion of gold valid evidence retained by the system.
+- False-acceptance rate: proportion of gold invalid evidence accepted by the system.
+- Stale-evidence detection recall: proportion of stale evidence flagged.
+- False-corroboration rate: proportion of known dependent source pairs incorrectly declared independent.
+- Contradiction preservation: precision, recall and F1 over annotated contradiction pairs.
+- Review and authorization compliance: proportion of review-required cases with both review completion and valid authorization recorded.
+
+Undefined denominators are reported as `null`, not silently converted to zero.
+
+## Important interpretation limits
+
+1. Gold labels are annotations for these fictional cases, not universal truth labels.
+2. The evaluator checks submitted structured outputs. It does not inspect model internals or prove how a system reached an answer.
+3. It does not measure factual truth, calibration, human review quality, security, privacy, or causal reasoning.
+4. The development set is public and small. Tuning to it creates overfitting risk.
+5. A complete benchmark requires expanded domain-specific cases, annotation guidance, independent adjudication, stronger baselines, a frozen protocol and separate evaluation data.
+6. No result should be described as independent validation or certification.
+
+## Next research work
+
+Before confirmatory experiments, H3XYN LAB should:
+- review the task definitions and gold annotations;
+- expand the dataset using documented generation and sampling procedures;
+- establish baseline and KSEL treatment implementations with equivalent resource budgets;
+- define primary outcomes and practical thresholds in advance;
+- commission independent annotation review;
+- publish a frozen protocol and analysis plan;
+- maintain a separate held-out evaluation set with controlled access or a delayed public release.
+
+## Licence
+
+No reuse licence is implied by public visibility. Check the repository's licence status and third-party rights before reusing or redistributing these materials.
