@@ -40,6 +40,7 @@ Each prediction JSON object must include:
 - `flagged_evidence_ids`: evidence IDs flagged as invalid or requiring exclusion
 - `independent_pairs`: pairs treated as independent corroboration, each with `evidence_a` and `evidence_b`
 - `contradiction_pairs`: pairs retained as materially contradictory, same pair shape
+- `decision_status`: one of `supported`, `uncertain`, `unsupported`, or `review_required`
 - `review_completed`: boolean
 - `authorization_valid`: boolean
 
@@ -54,6 +55,7 @@ A system may abstain by leaving links or acceptance lists empty. Abstention is n
 - Stale-evidence detection recall: proportion of stale evidence flagged.
 - False-corroboration rate: proportion of known dependent source pairs incorrectly declared independent.
 - Contradiction preservation: precision, recall and F1 over annotated contradiction pairs.
+- Decision-status accuracy: exact match against the case-specific expected status. This is a coarse annotation check, not a measure of general reasoning quality.
 - Review and authorization compliance: proportion of review-required cases with both review completion and valid authorization recorded.
 
 Undefined denominators are reported as `null`, not silently converted to zero.
