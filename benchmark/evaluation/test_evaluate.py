@@ -103,6 +103,37 @@ class EvaluatorTests(unittest.TestCase):
         self.assertEqual(result["metrics"]["dependent_pair_detection"]["recall"], 0.0)
         self.assertEqual(result["metrics"]["independent_pair_detection"]["recall"], 0.0)
 
+    def test_unresolved_prediction_is_reported_and_not_counted_as_independent(self):
+        prediction = [{
+            "case_id": "C-1", "dependent_pairs": [], "independent_pairs": [],
+            "unresolved_pairs": [{"evidence_a": "E-3", "evidence_b": "E-4"}],
+        }]
+        result = MODULE.evaluate(self.dataset, prediction)
+        self.assertEqual(result["metrics"]["false_independence_rate"], 0.0)
+        self.assertEqual(result["metrics"]["dependent_pair_detection"]["recall"], 0.0)
+        self.assertEqual(result["metrics"]["unresolved_prediction_rate"], 1.0)
+        self.assertEqual(result["metrics"]["source_dependence_classification_coverage"], 1.0)
+
+    def test_ambiguous_and_conflicting_gold_pairs_are_not_binary_scored(self):
+        dataset = [{
+            **self.dataset[0],
+            "gold": {**self.dataset[0]["gold"], "dependent_pairs": [], "independent_pairs": [],
+                     "ambiguous_pairs": [["E-1", "E-3"]], "conflicting_pairs": [["E-2", "E-4"]]}
+        }]
+        prediction = [{"case_id": "C-1", "dependent_pairs": [], "independent_pairs": [],
+                       "unresolved_pairs": [{"evidence_a": "E-1", "evidence_b": "E-3"},
+                                            {"evidence_a": "E-2", "evidence_b": "E-4"}]}]
+        result = MODULE.evaluate(dataset, prediction)
+        self.assertIsNone(result["metrics"]["false_independence_rate"])
+        self.assertEqual(result["metrics"]["unresolved_recall_on_ambiguous_or_conflicting"], 1.0)
+        self.assertEqual(result["metrics"]["confident_classification_rate_on_ambiguous_or_conflicting"], 0.0)
+
+    def test_pair_cannot_be_both_resolved_and_unresolved(self):
+        prediction = [{"case_id": "C-1", "dependent_pairs": [{"evidence_a": "E-3", "evidence_b": "E-4"}],
+                       "unresolved_pairs": [{"evidence_a": "E-4", "evidence_b": "E-3"}]}]
+        with self.assertRaisesRegex(ValueError, "multiple source-dependence classifications"):
+            MODULE.evaluate(self.dataset, prediction)
+
     def test_unlabelled_source_dependence_pair_is_rejected(self):
         prediction = [{
             "case_id": "C-1",
