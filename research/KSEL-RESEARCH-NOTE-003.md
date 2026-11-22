@@ -638,10 +638,19 @@ Event names are illustrative. Production schemas should define stable identifier
 
 ---
 
+## Selected references and related work
+
+These sources provide background on data provenance, integrity controls, and prompt-injection risks. They do not imply that any individual control can establish the truth of evidence.
+
+1. Buneman, P., Khanna, S., & Tan, W.-C. (2001). Why and Where: A Characterization of Data Provenance. In *Database Theory — ICDT 2001*, 316–330. https://doi.org/10.1007/3-540-44503-X_20 — Provenance of data derived through database queries.
+2. W3C. (2013). *PROV-O: The PROV Ontology*. W3C Recommendation. https://www.w3.org/TR/prov-o/ — A vocabulary for provenance representation and interchange.
+3. OWASP GenAI Security Project. *Prompt Injection*. https://genai.owasp.org/glossary/prompt-injection/ — Security terminology and context for malicious instructions embedded in input material.
+4. National Institute of Standards and Technology. (2015; updated 2023). *Secure Hash Standard (SHS)*. FIPS PUB 180-4. https://csrc.nist.gov/pubs/fips/180-4/upd1/final — Standardized hash functions; a digest supports integrity comparison but does not establish source truth or authenticity.
+
 ## Publication and integrity statement
 
 This document presents a preliminary research framework. It does not report completed experiments, establish a security certification, guarantee detection of adversarial content, prove the truth of any evidence object, or claim compliance with an external standard. Cryptographic mechanisms provide only the properties supported by their implementation and trust assumptions. All proposed controls require threat-specific design, authorized testing, and independent evaluation before consequential deployment.
 
 **Suggested citation**
 
-H3XYN LAB. (2026). *KSEL Research Note 003: Evidence Integrity, Provenance Verification, and Adversarial Resilience* (Version 0.1.0). H3XYN LAB Technical Research Notes. https://github.com/nofuxgvnwiring-source/ksel-research-note-001
+H3XYN LAB. (2026). *KSEL Research Note 003: Evidence Integrity, Provenance Verification, and Adversarial Resilience* (Version 0.1.0). H3XYN LAB Technical Research Notes. https://github.com/Hexynlab/ksel-research-note-001
