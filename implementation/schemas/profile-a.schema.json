@@ -147,10 +147,10 @@
             "title",
             "origin_status",
             "access_class"
-          ],
-          "unevaluatedProperties": false
+          ]
         }
-      ]
+      ],
+      "unevaluatedProperties": false
     },
     "evidence": {
       "allOf": [
@@ -258,10 +258,10 @@
             "acquired_at",
             "integrity_status",
             "relevance_status"
-          ],
-          "unevaluatedProperties": false
+          ]
         }
-      ]
+      ],
+      "unevaluatedProperties": false
     },
     "claim": {
       "allOf": [
@@ -385,10 +385,10 @@
             "proposition",
             "evidence_links",
             "review_state"
-          ],
-          "unevaluatedProperties": false
+          ]
         }
-      ]
+      ],
+      "unevaluatedProperties": false
     },
     "uncertainty": {
       "allOf": [
@@ -493,10 +493,10 @@
             "level",
             "resolution_condition",
             "status"
-          ],
-          "unevaluatedProperties": false
+          ]
         }
-      ]
+      ],
+      "unevaluatedProperties": false
     },
     "review": {
       "allOf": [
@@ -638,10 +638,10 @@
             "rationale",
             "evidence_snapshot",
             "reviewed_at"
-          ],
-          "unevaluatedProperties": false
+          ]
         }
-      ]
+      ],
+      "unevaluatedProperties": false
     },
     "audit_event": {
       "allOf": [
@@ -736,10 +736,10 @@
             "target_id",
             "event_time",
             "record_time"
-          ],
-          "unevaluatedProperties": false
+          ]
         }
-      ]
+      ],
+      "unevaluatedProperties": false
     }
   }
 }
