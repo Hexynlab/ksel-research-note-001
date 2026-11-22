@@ -1,6 +1,6 @@
 # Security Policy
 
-H3XYN LAB takes security reports concerning this repository and its associated research artefacts seriously.
+HEXYN LAB takes security reports concerning this repository and its associated research artefacts seriously.
 
 ## Reporting a vulnerability
 
@@ -21,6 +21,6 @@ Do not include live credentials, private keys, personal data, or unrelated third
 
 ## Coordinated disclosure
 
-Please allow maintainers reasonable time to acknowledge, investigate, and address a report before public disclosure. Coordinate any disclosure involving affected third parties with them where appropriate. H3XYN LAB will aim to keep the reporter informed as the issue is assessed.
+Please allow maintainers reasonable time to acknowledge, investigate, and address a report before public disclosure. Coordinate any disclosure involving affected third parties with them where appropriate. HEXYN LAB will aim to keep the reporter informed as the issue is assessed.
 
-This policy complements the [H3XYN LAB Public Disclosure Policy](governance/PUBLIC-DISCLOSURE-POLICY.md). It does not promise a specific response or remediation timeline.
+This policy complements the [HEXYN LAB Public Disclosure Policy](governance/PUBLIC-DISCLOSURE-POLICY.md). It does not promise a specific response or remediation timeline.
