@@ -15,7 +15,7 @@ This draft is not an annotation record and does not establish any dataset labels
 
 ## 2. Unit of annotation
 
-The unit is an unordered pair of distinct evidence items, (E_a, E_b), considered in the context of the case's supplied source records, lineage statements and task-relevant documentation.
+The unit is an unordered pair of distinct evidence items, (E_a, E_b), considered in the context of one specified case and the same task-relevant claim or proposition. Record the claim or proposition being assessed. Do not label a pair in the abstract: two items may share lineage for one claim while independently establishing another fact.
 
 Annotators must assess only information available in the annotation packet. Do not search externally unless the frozen study protocol explicitly authorizes and records that action.
 
@@ -64,7 +64,7 @@ Use when the packet contains materially incompatible lineage assertions and the 
 
 Record the competing assertions and their evidence references. Do not silently select one history.
 
-For metric mapping, the study protocol must specify whether this label is excluded from binary pair-rate denominators, treated as a separate stratum, or adjudicated into another label. This handbook does not make that statistical decision.
+For this experiment's current design, CONFLICTING LINEAGE is not forced into either binary class. It is excluded from binary dependent/independent pair-rate denominators and retained as a separate reported category, unless a formally versioned protocol amendment specifies otherwise. Do not relabel it merely to increase the number of scorable pairs.
 
 ## 4. Relationship reasoning rules
 
@@ -79,11 +79,23 @@ For metric mapping, the study protocol must specify whether this label is exclud
 9. **Assess relevance to the claim.** A relationship may be immaterial if the two items independently establish a different relevant fact; explain this in notes.
 10. **Do not use external assumptions** about a publisher, institution, author or platform unless included in the packet and authorized by protocol.
 
-## 5. Required annotation record
+## 5. Evidence packet and support requirements
+
+Annotators must use the same versioned evidence packet for a case. The packet should identify each evidence item, the claim or proposition under review, supplied source records, lineage assertions, and stable references to the supporting material. Record the packet version or immutable identifier in the annotation record.
+
+Use the strongest and most direct support actually present in the packet. Examples include original records, dataset or measurement documentation, archived source material, publication or republication statements, explicit citations, documented transformation histories, and contemporaneous metadata. This is an evidence-description guide, not a universal ranking: the relevance and reliability of a record depend on what it directly establishes. Distinguish a source's own assertion from independently corroborating documentation.
+
+A label must be traceable to specific packet references. Unsupported statements such as “these sites usually copy each other” are not sufficient. Similar wording, matching values, common ownership, shared authorship, common hosting, or a common topic may motivate scrutiny but cannot alone establish dependence. Likewise, separate URLs, publishers, document identifiers, or organizations cannot alone establish independence.
+
+If a packet contains a lineage claim without its supporting record, annotate only what the supplied material supports. If key records are absent, incomplete, inaccessible, or internally unclear, use AMBIGUOUS / INSUFFICIENT unless materially incompatible lineage assertions justify CONFLICTING LINEAGE.
+
+## 6. Required annotation record
 
 For every pair, record:
 
 - case ID;
+- claim or proposition ID/description;
+- evidence packet version or immutable ID;
 - evidence item IDs;
 - primary label;
 - concise rationale;
@@ -96,7 +108,7 @@ For every pair, record:
 
 Confidence is not a substitute for the categorical label and must not be interpreted as a calibrated probability.
 
-## 6. Independent annotation and adjudication
+## 7. Independent annotation and adjudication
 
 - At least two annotators label each eligible pair independently before discussion.
 - Annotators must not see system predictions or the other annotator's labels before submitting their independent record, where feasible.
@@ -108,9 +120,11 @@ Confidence is not a substitute for the categorical label and must not be interpr
 
 Annotator qualifications, training, relevant experience and conflicts of interest must be documented separately.
 
-## 7. Calibration and handbook revision
+For each disagreement, the adjudicator must identify the disputed proposition, review the original independent records and cited packet evidence, state the rule applied, and document why the final label is supported. Adjudication may retain AMBIGUOUS / INSUFFICIENT or CONFLICTING LINEAGE; it is not a requirement to force a binary outcome. The adjudicator must not see system condition or predictions where feasible.
 
-Before confirmatory annotation, conduct a pilot using development-only examples. Discuss disagreements, clarify ambiguous instructions and revise the handbook as needed.
+## 8. Calibration and handbook revision
+
+Before confirmatory annotation, conduct a pilot using development-only examples that cover direct derivation, multi-hop derivation, common-origin evidence, independent origins, missing lineage, and contradictory lineage records. Discuss disagreements, clarify ambiguous instructions and revise the handbook as needed. Pilot examples and any revisions must remain separate from the held-out confirmatory set.
 
 After the handbook is frozen:
 - assign a new version to any substantive change;
@@ -118,7 +132,7 @@ After the handbook is frozen:
 - assess whether already annotated items require re-annotation;
 - do not change rules in response to observed confirmatory system results without declaring a protocol deviation.
 
-## 8. Out-of-scope decisions
+## 9. Out-of-scope decisions
 
 This handbook does not determine:
 - sample size;
@@ -130,6 +144,6 @@ This handbook does not determine:
 
 Those decisions belong in the frozen experiment protocol and preregistration.
 
-## 9. Status
+## 10. Status
 
 Draft for review only. It is not frozen, and no confirmatory annotations are claimed.
