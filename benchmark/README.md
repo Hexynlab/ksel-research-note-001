@@ -17,6 +17,8 @@ They are not representative of real-world prevalence, domain difficulty, or oper
 - `schemas/prediction.schema.json` — expected prediction record shape.
 - `examples/predictions.example.jsonl` — one example prediction.
 - `evaluation/evaluate.py` — standard-library-only evaluator.
+- `evaluation/test_evaluate.py` — evaluator unit tests.
+- `BASELINE-AND-TREATMENT-PROTOCOL.md` — comparison-condition definitions.
 
 ## Run
 
